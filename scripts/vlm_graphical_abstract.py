@@ -81,7 +81,7 @@ def main():
             r'conformal sets bound it (Theorem 1)', ha='center', fontsize=7, color=MUTED, va='top', linespacing=1.15)
     ax.text(0.506, 0.49, 'Relaying the decision list keeps\n' r'$\beta = 1/2$ on any connected backhaul;' '\n'
             r'one-hop coordination can fall to $1/k$', ha='center', fontsize=7.2, color=INK, va='top', linespacing=1.15)
-    ax.text(0.506, 0.335, 'Sets instead of top label: loss\n2.1 → 1.1 points of the optimum', ha='center', fontsize=7.2,
+    ax.text(0.506, 0.335, 'Test bench, sets instead of top label:\nloss 2.1 → 1.1 points of the optimum', ha='center', fontsize=7.2,
             color=ORANGE, fontweight='bold', va='top', linespacing=1.15)
     arrow(ax, 0.66, 0.685, 0.565)
     # panel 3: fleet + onboard
@@ -94,15 +94,15 @@ def main():
     for x, y in pts[1:]:
         a3.add_patch(Circle((x, y), 0.07, color=GREEN))
     fig.add_axes([0.825, 0.53, 0.158, 0.30]).imshow(bench); fig.axes[-1].axis('off')
-    ax.text(0.904, 0.50, 'Jetson Orin Nano bench', fontsize=6.5, color=MUTED, ha='center', va='top')
-    ax.text(0.70, 0.46, 'Chain rule, 250 m links: disconnection\n−83 to −86 %; beats one-hop RAG by\n2.2 % (8 UAVs) and 4.5 % (10 UAVs)',
+    ax.text(0.904, 0.50, 'Jetson + Pixhawk bench', fontsize=6.5, color=MUTED, ha='center', va='top')
+    ax.text(0.70, 0.46, 'Best-first relaying beats one-hop RAG\nby 2 to 25 % (8 to 16 UAVs, 200 m links)\nwith fewer messages',
             fontsize=7, color=INK, va='top', linespacing=1.15)
-    ax.text(0.70, 0.325, 'Jetson Orin Nano, int8: 1.8 s per\nframe (5 s period); 7.0 of 7.6 GB', fontsize=7.2, color=GREEN,
+    ax.text(0.70, 0.325, 'Closed loop, Jetson + Pixhawk HIL:\n12 missions, 0 failsafes, 2.2 s/frame', fontsize=7.2, color=GREEN,
             fontweight='bold', va='top', linespacing=1.15)
     # bottom strip
-    ax.text(0.5, 0.15, '48 AirSim CityEnviron missions, VLM in the loop (PX4 SITL): no collision; no false major/total '
+    ax.text(0.5, 0.15, '48 AirSim CityEnviron missions with the live VLM (PX4 SITL): no collision; no false major/total '
             'damage alarm in 9,734 frames', ha='center', fontsize=7.2, color=INK)
-    ax.text(0.5, 0.075, 'All tests pre-registered; failed criteria reported (e.g. single-seed ECE, one-hop tie on complete links).',
+    ax.text(0.5, 0.075, 'All tests pre-registered; failed criteria reported (e.g. single-seed ECE, no in-flight gain shown for damage weights).',
             ha='center', fontsize=6.5, color=MUTED)
     check(fig, ax)
     fig.savefig(OUT / 'graphical_abstract.png', dpi=270); fig.savefig(OUT / 'graphical_abstract.pdf')

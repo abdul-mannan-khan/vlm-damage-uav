@@ -74,76 +74,73 @@ def scenes():
         dict(id='title', card=dict(title='Trustworthy onboard vision-language damage\nassessment for multi-UAV networks', dark=True,
                                    kicker='Demo for the IEEE Transactions on Vehicular Technology submission',
                                    body='Abdul Manan Khan, Vishwanath Bijalwan, Babar Jamil\nAll results: pre-registered tests; failures reported.'),
-             say='Trustworthy onboard vision language damage assessment for multi UAV networks, with perception aware '
-                 'coordination guarantees.'),
+             say='Hello, I am Abdul Manan Khan. This is a short demo of our paper on trustworthy onboard vision language '
+                 'damage assessment for multi UAV networks, with perception aware coordination guarantees.'),
         dict(id='problem', card=dict(title='The problem', body=(
             'UAVs that restore connectivity after a disaster can also map building damage.\n'
             'Off-the-shelf VLMs grade damage poorly: macro-F1 0.18 (3B) and 0.27 (7B) on RescueNet.\n'
             'Coordination guarantees assume the objective is known exactly; a perception error voids them.'),
             img=None),
-             say='UAVs that restore connectivity after a disaster can also map building damage. But off the shelf vision '
-                 'language models grade damage poorly, and coordination guarantees assume the objective is known exactly. '
-                 'A perception error silently voids the guarantee.'),
+             say='After a disaster, UAVs that restore connectivity can also map building damage. The problem is that off the '
+                 'shelf vision language models grade damage poorly, and coordination guarantees assume we know the objective '
+                 'exactly. One wrong reading can quietly void the guarantee. We set out to close that gap.'),
         dict(id='pipeline', card=dict(title='Per-UAV pipeline', img='sys', img_box=(0.04, 0.30, 0.92, 0.42),
                                       body='Camera frame → tuned VLM → calibrated belief → conformal set → weight interval → '
                                            'relayed sequential greedy → PX4 autopilot'),
-             say='Each camera frame goes to a fine tuned Qwen 2.5 VL 3B model. Its answer becomes a calibrated belief and a '
-                 'conformal label set with ninety percent coverage. The planner uses the midpoint of each set and relays '
-                 'its decisions over the backhaul.'),
+             say='On each UAV, every camera frame goes to our fine tuned Qwen 2.5 VL 3B model. We turn its answer into a '
+                 'calibrated belief and a conformal label set with ninety percent coverage. The planner uses the midpoint of '
+                 'each set, and relays its decisions to the other UAVs over the backhaul.'),
         dict(id='vlm', card=dict(title='A calibrated VLM with conformal sets', img='fig_reliability', img_box=(0.52, 0.16, 0.44, 0.66),
                                  lines=[(0.06, 0.70, 'Damage macro-F1: 0.27 → 0.70', dict(fontsize=34, color=INK)),
                                         (0.06, 0.60, 'ECE 0.046 (4-seed ensemble)', dict(fontsize=34, color=INK)),
                                         (0.06, 0.50, 'Coverage 93.3 %\n(lower bound 90.6 %)', dict(fontsize=34, color=INK, va='top')),
                                         (0.06, 0.30, '450 RescueNet test images', dict(fontsize=24, color=SOFT))]),
-             say='Fine tuning raises damage macro F1 from 0.27 to 0.70. After calibration the expected calibration error is '
-                 '0.046, and the label sets cover 93 percent of test images, with a lower bound of 90.6 percent.'),
+             say='Fine tuning raised damage macro F1 from 0.27 to 0.70. After calibration, the expected calibration error is '
+                 '0.046, and our label sets cover 93 percent of test images, with a lower bound of 90.6 percent.'),
         dict(id='bound', card=dict(title='The perception-aware bound', dark=True,
                                    lines=[(0.5, 0.58, eq, dict(fontsize=56, color='#F4F1EA', ha='center'))],
                                    body='δ counts weight errors only on the users a plan serves.\n'
                                         'Conformal sets bound it in expectation and with high probability (Theorem 1).'),
-             say='We prove that a plan computed on perceived weights keeps beta times the optimum, minus a term that counts '
-                 'weight errors only on the users the plans serve. The conformal sets bound that term.'),
+             say='Our main result is this bound. A plan computed on perceived weights keeps beta times the optimum, minus a '
+                 'term that counts weight errors only on the users the plans serve, and the conformal sets bound that term.'),
         dict(id='links', card=dict(title='Range-limited links: relay the decision list', img='fig_links', img_box=(0.04, 0.22, 0.92, 0.55),
                                    body='Relaying keeps the 1/2 guarantee on any connected backhaul; one-hop coordination can fall to 1/k.'),
-             say='Relaying the decision list keeps the one half guarantee on any connected backhaul, while one hop '
-                 'coordination can fall to one over k. With 200 metre links the relayed planner leads by 2.3 points at six '
-                 'UAVs; with complete links the one hop baseline is slightly better.'),
-        dict(id='perception', card=dict(title='Planning on the sets halves the loss', img='fig_perception', img_box=(0.04, 0.22, 0.92, 0.55),
+             say='We also show that relaying the decision list keeps the one half guarantee on any connected backhaul, while '
+                 'one hop coordination can fall to one over k. On our test bench with 200 metre links, the relayed planner '
+                 'leads by 2.3 points at six UAVs; with complete links the one hop baseline is slightly better.'),
+        dict(id='perception', card=dict(title='Test bench: planning on the sets halves the loss', img='fig_perception', img_box=(0.04, 0.22, 0.92, 0.55),
                                         body='1.1 points of the optimum lost with the conformal midpoint vs 2.1 with the top label.'),
-             say='On an exact optimum test bench, planning on the conformal sets instead of the top label halves the loss '
-                 'caused by perception: 1.1 versus 2.1 points of the optimum.'),
-        dict(id='chain', card=dict(title='Network simulator: the chain rule', dark=True, lines=[
-            (0.06, 0.66, 'Disconnected UAV-seconds per episode, 250 m backhaul', dict(fontsize=28, color='#C9D3E3')),
-            (0.06, 0.56, '6 UAVs:   95 → 16', dict(fontsize=40, color='#F4F1EA')),
-            (0.06, 0.47, '8 UAVs:   107 → 17', dict(fontsize=40, color='#F4F1EA')),
-            (0.06, 0.38, '10 UAVs:  88 → 12', dict(fontsize=40, color='#F4F1EA')),
-            (0.55, 0.56, 'vs one-hop RAG:', dict(fontsize=30, color='#C9D3E3')),
-            (0.55, 0.47, '+0.7 %, +2.2 %, +4.5 %', dict(fontsize=40, color='#8FB8EC')),
-            (0.55, 0.38, '29 of 30 seeds each', dict(fontsize=30, color='#C9D3E3'))],
-            body='Each target must stay in radio range of the gateway or of a target already relayed. No ratio is proven for it.'),
-             say='In a network simulator with 250 metre links, the relayed planner lost the gateway path for three to five '
-                 'percent of UAV time. A chain rule on the planned targets cut that by 83 to 86 percent, and the planner '
-                 'then beat one hop coordination at every fleet size, in 29 of 30 seeds.'),
+             say='On an exact optimum test bench, planning on the conformal sets instead of the top label halved the loss '
+                 'caused by perception: 1.1 versus 2.1 points of the optimum. In our city scenario, damage barely changed the '
+                 'plan, so we do not claim this gain in flight.'),
+        dict(id='bestfirst', card=dict(title='Best-first relaying: the gap grows with the fleet', img='fig_bestfirst',
+                                       img_box=(0.22, 0.17, 0.56, 0.62),
+                                       body='Network simulator, 30 paired seeds per point: up to +25 % over one-hop RAG at 16 UAVs, fewer messages.'),
+             say='In a network simulator, we let the UAV with the largest gain decide next. This best first relaying beats '
+                 'one hop coordination by 2 percent at eight UAVs and by 25 percent at sixteen UAVs on 200 metre links, '
+                 'while sending fewer messages. Its weak point is that some UAVs lose the gateway path for longer.'),
         dict(id='replay', live=dict(start=20.0),   # 2x replay since 11 Nov: mission t = 40 s, as before
-             say='This is a replay of one AirSim City Environ mission, flown by PX4 software autopilots. The model read each '
-                 'downward frame during the flight on a cloud GPU. In 48 missions there was no collision, and no false major '
-                 'or total damage alarm in 9,734 frames of the intact city.'),
-        dict(id='onboard', card=dict(title='Onboard: int8 model on a Jetson Orin Nano', img='fig_setup_preview',
+             say='Here is a replay of one AirSim City Environ mission, flown by PX4 software autopilots. The model read every '
+                 'downward frame live on a cloud GPU. In 48 missions we saw no collision, and no false major or total damage '
+                 'alarm in 9,734 frames of the intact city.'),
+        dict(id='onboard', card=dict(title='Closed loop on the Jetson and the Pixhawk', img='fig_setup_preview',
                                      img_box=(0.03, 0.18, 0.55, 0.62),
-                                     lines=[(0.62, 0.70, '1.8 s per city frame', dict(fontsize=38, color=INK)),
-                                            (0.62, 0.62, 'frame period 5 s', dict(fontsize=28, color=SOFT)),
-                                            (0.62, 0.50, '7.0 of 7.6 GB memory', dict(fontsize=38, color=INK)),
-                                            (0.62, 0.42, 'coverage 0.902 after re-calibration', dict(fontsize=28, color=SOFT))],
+                                     lines=[(0.62, 0.72, '12 HIL missions, 0 failsafes', dict(fontsize=36, color=INK)),
+                                            (0.62, 0.64, 'Pixhawk 6C flies UAV 0 (props off)', dict(fontsize=26, color=SOFT)),
+                                            (0.62, 0.53, 'VLM 2.2 s per frame', dict(fontsize=36, color=INK)),
+                                            (0.62, 0.45, 'all 720 frames answered; 5 s period', dict(fontsize=26, color=SOFT)),
+                                            (0.62, 0.34, 'int8 model alone: 1.8 s', dict(fontsize=26, color=SOFT))],
                                      body='Bench photo: Jetson not mounted on the airframe; laptop screen inserted from the replay.'),
-             say='On a Jetson Orin Nano, an 8 bit version of the model reads a camera frame in 1.8 seconds, well inside the '
-                 'five second frame period, and keeps ninety percent coverage after re-calibration.'),
+             say='Finally, we closed the loop on flight hardware. In 12 hardware in the loop missions, a Pixhawk 6C flew one UAV '
+                 'through AirSim, while the Jetson Orin Nano ran both the model and the fleet decisions. There was no failsafe, '
+                 'and the model answered every frame in about 2.2 seconds, inside the five second frame period.'),
         dict(id='end', card=dict(title='Summary', dark=True, body=(
             'Calibrated VLM perception, a guarantee that carries its uncertainty into the plan,\n'
-            'relayed coordination on sparse links, and onboard timing on a Jetson.\n'
-            'Next: a closed-loop flight with the model onboard.')),
-             say='A compact vision language model can be a trustworthy input to UAV fleet coordination, when its '
-                 'uncertainty is calibrated and carried into the guarantee. The next step is a closed loop flight with the '
-                 'model onboard.'),
+            'best-first relayed coordination, and a closed loop on a Jetson and a Pixhawk.\n'
+            'Code, results and videos: github.com/abdul-mannan-khan/vlm-damage-uav')),
+             say='To sum up: a compact vision language model can be a trustworthy input to UAV fleet coordination, when its '
+                 'uncertainty is calibrated and carried into the guarantee. Every test was pre registered, and we report the '
+                 'ones that failed. The code, results and videos are public. Thank you for watching.'),
     ]
 
 
