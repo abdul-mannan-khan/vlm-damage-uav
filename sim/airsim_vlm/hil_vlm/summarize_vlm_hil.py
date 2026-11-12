@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pass/fail table of the closed-loop VLM HIL against the pre-registration in PLAN.md (bars P1-P8), plus the score
+"""Pass/fail table of the closed-loop VLM HIL against the pre-registration in DESIGN.md (bars P1-P8), plus the score
 against the kinematic twin and the step-6 SITL twin (results/vlm_damage/step6_summary.json, same method and seed).
 
     python3 summarize_vlm_hil.py RESULTS_DIR [--json OUT.json]

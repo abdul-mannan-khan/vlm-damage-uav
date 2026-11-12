@@ -99,7 +99,7 @@ PY
     echo "last read-back ($last): $( [ -n "$last" ] && tr '\n' ' ' < $last)"
     echo "excluded from the read-back (flight counters): COM_FLIGHT_UUID LND_FLIGHT_T_LO LND_FLIGHT_T_HI"
     echo "geofence: left as found (this script writes no GF_*)"; } > HANDOVER_REPORT.txt
-  log "HANDOVER $( [ $frc = 0 ] && echo OK || echo "WARNING: check failed, tell the next session and it-services-9b" ): $(tr '\n' ' ' < HANDOVER_REPORT.txt | head -c 600)"
+  log "HANDOVER $( [ $frc = 0 ] && echo OK || echo "WARNING: check failed, tell the next session and the rig coordinator" ): $(tr '\n' ' ' < HANDOVER_REPORT.txt | head -c 600)"
   idle="idle (last: MAQAC city HIL $(date -u))"; echo "$idle" > ~/.pixhawk.owner; echo "$idle" > ~/vlm_research/.x500.owner
   log "done; owner files idle"
 }

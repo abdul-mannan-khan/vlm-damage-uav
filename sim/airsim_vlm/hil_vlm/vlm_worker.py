@@ -15,7 +15,7 @@ Backends
           'relay'  (frame_relay.py on the laptop serves the same two images over HTTP; no airsim package on the Jetson),
           'fake'   (step-6 frames results/vlm_damage/city_step6/runs/<run>/frames/<t>_uav0_rgb.jpg + labels.jsonl)
   model:  'int8'   (bench_vlm.load / run_one: seed 0 merged, int8 LM weights; ~1.8 s per 640x480 frame on the Orin Nano)
-          'int8x4' (bench_vlm_ens: 4 seeds on one int8 model, ~3.6 s; RAM peak 7.5 of 7.6 GB -> see PLAN.md)
+          'int8x4' (bench_vlm_ens: 4 seeds on one int8 model, ~3.6 s; RAM peak 7.5 of 7.6 GB -> see DESIGN.md)
           'fake'   (stored Jetson logits results/vlm_damage/jetson/20261110_173516/city.jsonl; sleeps the stored time)
 """
 import glob

@@ -12,5 +12,5 @@ unchanged  bench_vlm.py, bench_vlm_ens.py   scripts/jetson_vlm/ (step 8 / step 1
 unchanged  buildings.py, seg_rgbs.txt, heightmap.py   sim/airsim_vlm/airsim/maqac_px4/
 copied     buildings.json               results/vlm_damage/city_step6/buildings.json (step-6 building inventory, 171 entries)
 new        int8_v2_calibration.npz      export_int8_calibration.py on results/vlm_damage/jetson/20261110_173516/val.jsonl (reproduces step8 P3 V2 exactly)
-new        run_vlm_hil.py, vlm_worker.py, frame_relay.py, export_int8_calibration.py, summarize_vlm_hil.py, make_jetson_bundle.sh, PLAN.md
+new        run_vlm_hil.py, vlm_worker.py, frame_relay.py, export_int8_calibration.py, summarize_vlm_hil.py, make_jetson_bundle.sh, DESIGN.md
 reference  vehcom_orig/                 untouched copies of the 4 adapted VehCom files, for diffs

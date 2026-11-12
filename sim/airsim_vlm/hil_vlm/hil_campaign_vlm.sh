@@ -8,12 +8,12 @@
 #   hand-over checks -> owner files idle.
 # Changes from VehCom: own folder/logs/backups (~/vlm_hil), the VLM runner (run_vlm_hil.py) and its memory pre-check,
 # tegrastats logged for the whole campaign, geofence handled by the 11 Nov 2026 standard practice
-# (~/lit_results/x500_airsim_hitl_bridge/FENCE_STATE.md: set the limits the experiment needs, restore the same-day backup,
+# (the lab fence procedure: set the limits the experiment needs, restore the same-day backup,
 # make sure 100/60/3 is left, read back), final SYS_HITL 0 check.
 #
 # HUMAN DECISIONS (marked "DECIDE" below; nothing here runs until they are settled):
 #   D1 book the rig in robotq (run vlm-x500-hil-closedloop) and start AirSim on the laptop first (laptop is reserved for HIL)
-#   D2 VLM coupling to the planner (VLM_PLANNER: "off prior" = both arms, PLAN.md) and the seeds / mission count
+#   D2 VLM coupling to the planner (VLM_PLANNER: "off prior" = both arms, DESIGN.md) and the seeds / mission count
 #   D3 single seed int8 (default) vs 4-seed ensemble (needs a 4-seed onboard calibration that does not exist yet)
 #   D4 the shakedown verdict: echo GO / REDO / ABORT > ~/vlm_hil/CONTROL
 #   D5 geofence during the missions (default: off, as the 11 Nov standard practice allows; restored at the end)
@@ -29,7 +29,7 @@ log(){ echo "$(date -u +%F_%T) $*" | tee -a $L; }
 TAG="VLM closed-loop HIL, AirSim city (ras-multi-agent-6g-uav VLM paper)"
 B=params/params_before_vlm_hil_$(date -u +%m%d_%H%M).params
 REF=${REF:-params/reference_paperA_2026-11-02.params}     # names/types for a by-name backup (copy from ~/maqac_hil/params)
-SEEDS=${SEEDS:-"20000 20001 20002 20003 20004 20005"}     # DECIDE D2 (PLAN.md: 6 seeds x 2 arms = 12 missions ~ 1.6 h)
+SEEDS=${SEEDS:-"20000 20001 20002 20003 20004 20005"}     # DECIDE D2 (DESIGN.md: 6 seeds x 2 arms = 12 missions ~ 1.6 h)
 VLM_PLANNER=${VLM_PLANNER:-"off prior"}                   # DECIDE D2
 VLM_MODEL=${VLM_MODEL:-int8}                              # DECIDE D3 (int8x4 needs CALIB=<4-seed onboard calibration>)
 CALIB=${CALIB:-int8_v2_calibration.npz}
@@ -118,7 +118,7 @@ restore(){
     # explicit final check of the hand-over values (SYS_HITL 0, GF 100/60/3) from the last read-back file
     chk=$(grep -P "\t(SYS_HITL|GF_MAX_HOR_DIST|GF_MAX_VER_DIST|GF_ACTION|SYS_AUTOSTART|HIL_ACT_FUNC1)\t" $A | awk -F"\t" '{print $3"="$4}' | tr '\n' ' ')   # 12 Nov: files are tab-separated
     log "hand-over values: $chk"
-    echo "$chk" | grep -q "SYS_HITL=0 " || log "WARNING: SYS_HITL is not 0 after restore: tell the user and it-services-75"
+    echo "$chk" | grep -q "SYS_HITL=0 " || log "WARNING: SYS_HITL is not 0 after restore: tell the user and the rig coordinator"
   else
     log "no backup was taken; nothing was changed"
   fi
@@ -129,7 +129,7 @@ restore(){
     echo "excluded from the read-back (flight counters): COM_FLIGHT_UUID LND_FLIGHT_T_LO LND_FLIGHT_T_HI"
     echo "limits during the missions: $( [ "$FENCE_OFF" = 1 ] && echo 'GF_ACTION 0, GF_MAX_HOR_DIST 0, GF_MAX_VER_DIST 0 (off)' || echo 'as found')"
     echo "limits left: GF_MAX_HOR_DIST 100, GF_MAX_VER_DIST 60, GF_ACTION 3 (standard set), SYS_HITL 0"; } > HANDOVER_REPORT.txt
-  log "HANDOVER $( [ $frc = 0 ] && echo OK || echo "WARNING: check failed, tell the next session and it-services-75" ): $(tr '\n' ' ' < HANDOVER_REPORT.txt | head -c 700)"
+  log "HANDOVER $( [ $frc = 0 ] && echo OK || echo "WARNING: check failed, tell the next session and the rig coordinator" ): $(tr '\n' ' ' < HANDOVER_REPORT.txt | head -c 700)"
   [ -n "$TEGRA" ] && kill $TEGRA 2>/dev/null
   idle="idle (last: VLM closed-loop HIL $(date -u))"; echo "$idle" > ~/.pixhawk.owner; echo "$idle" > ~/vlm_research/.x500.owner
   log "done; owner files idle"
@@ -172,7 +172,7 @@ while [ "${SKIP_SHAKEDOWN:-0}" != 1 ]; do
   rm -f CONTROL
   fly --T 60 --seeds 19999 --vlm-planner prior --tag shakedown_
   log "shakedown finished: $(grep RESULT ~/vlm_hil/hil_vlm_run.log | tail -1 | head -c 900)"
-  log "waiting for CONTROL (GO / REDO / ABORT)   <- DECIDE D4 (PLAN.md shakedown checklist)"
+  log "waiting for CONTROL (GO / REDO / ABORT)   <- DECIDE D4 (DESIGN.md shakedown checklist)"
   dec=""
   for i in $(seq 1 1080); do [ -f CONTROL ] && { dec=$(cat CONTROL); break; }; sleep 10; done
   log "CONTROL: ${dec:-timeout}"
@@ -181,7 +181,7 @@ while [ "${SKIP_SHAKEDOWN:-0}" != 1 ]; do
 done
 [ "$dec" = "GO" ] || exit 0
 
-# ---- design (PLAN.md): disaster, 2 UAVs, 600 m CityEnviron area, T = 300 s, MAQAC-S + chain rule,
+# ---- design (DESIGN.md): disaster, 2 UAVs, 600 m CityEnviron area, T = 300 s, MAQAC-S + chain rule,
 # seeds x VLM_PLANNER arms, complete seeds first. One call for all missions: UAV 0 lands on its AirSim pad only at the end,
 # and the board must never be rebooted with the AirSim vehicle in the air.
 fly --T 300 --seeds $SEEDS --vlm-planner $VLM_PLANNER
