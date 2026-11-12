@@ -1,0 +1,230 @@
+{
+ "method": "maqac_seq",
+ "chain": true,
+ "seed": 20003,
+ "vlm_planner": "off",
+ "vlm_share": "all",
+ "vlm_model": "int8",
+ "vlm_frames": "relay",
+ "frame_every_s": 5,
+ "scenario": "disaster",
+ "n_uav": 2,
+ "T": 300,
+ "L": 600.0,
+ "n_users": 72,
+ "arrival_rate": 0.036,
+ "altitude": 100.0,
+ "v_cap": 14.0,
+ "city": "heightmap.npz",
+ "origin_ne": [
+  40.0,
+  -10.0
+ ],
+ "keepout": [
+  [
+   -80.0,
+   36.0,
+   -339.0,
+   -235.0,
+   240.0
+  ]
+ ],
+ "backend": "router",
+ "aborted": false,
+ "note": "",
+ "host": "jetson-super aarch64",
+ "hil": {
+  "qos_score": 178.06940517053468,
+  "qos_score_realised": 179.0,
+  "qos_max": 179.0,
+  "users_total": 82,
+  "users_served": 82,
+  "sessions_expected": 81.54010568906492,
+  "mean_wait_s": 0.6711722882804187,
+  "emergency_total": 30,
+  "emergency_served": 30,
+  "emergency_score": 89.8290944483339,
+  "emergency_wait_s": 0.06833078022028521,
+  "realtime_total": 37,
+  "realtime_served": 37,
+  "realtime_score": 73.28647303182764,
+  "realtime_wait_s": 1.0146806527051666,
+  "besteffort_total": 15,
+  "besteffort_served": 15,
+  "besteffort_score": 14.953837690373119,
+  "besteffort_wait_s": 1.0295346721529743,
+  "continuity": 0.5033812703304229,
+  "blocked": 388,
+  "interf_outage": 0,
+  "disconnected_uav_s": 0,
+  "rtb": 0,
+  "collisions": 0,
+  "near_misses": 0,
+  "energy_wh": 84.41700771351717,
+  "score_per_wh": 2.109402003146595,
+  "distance_m": 5632.903716034533,
+  "mean_hops": 1.0,
+  "mean_offload_lat_s": null,
+  "mean_attached": 19.601666666666667,
+  "failed_uavs": 0,
+  "J_session": 173.89069393830107,
+  "session_frac_mean": 0.9542438162255166,
+  "users_abandoned": 0,
+  "swap_wait_s": 0,
+  "emergency_J_session": 89.80336694327849,
+  "realtime_J_session": 71.54757942457945,
+  "besteffort_J_session": 12.53974757044314,
+  "tx_msgs": 1800,
+  "tx_attempts": 1800,
+  "tower_climb_s": 0,
+  "coord_iters": 2.0,
+  "coord_iters_max": 2,
+  "coord_msgs": 1.0,
+  "decide_ms": 5.564654718521828,
+  "decide_ms_p95": 6.941014414769597,
+  "record_coverage": 1.0,
+  "record_age_s": 0.5,
+  "method": "maqac_seq",
+  "config": "disaster_2uav",
+  "seed": 20003,
+  "n_uav": 2,
+  "scenario": "disaster",
+  "perception": "onboard",
+  "episode_time_s": 300.01
+ },
+ "kinematic": {
+  "J_session": 164.0657628786686,
+  "qos_score": 178.09295004816224,
+  "users_served": 82,
+  "mean_wait_s": 0.7443430199877358,
+  "energy_wh": 83.48621793359877,
+  "distance_m": 5233.245200882887,
+  "continuity": 0.46416645260724376,
+  "session_frac_mean": 0.8824018421077477,
+  "coord_msgs": 1.0,
+  "coord_iters": 2.0,
+  "decide_ms": 3.0931059197367476,
+  "decide_ms_p95": 3.8169103994732727,
+  "collisions": 0,
+  "rtb": 0,
+  "disconnected_uav_s": 0
+ },
+ "replay_twin": null,
+ "kin_wall_s": 3.38,
+ "flight": {
+  "track_err_h_m": {
+   "mean": 3.55397617542877,
+   "p95": 12.84402248279468,
+   "max": 14.125707069676745,
+   "n": 300
+  },
+  "track_err_3d_m": {
+   "mean": 2.67695257383907,
+   "p95": 8.052736787901509,
+   "max": 12.332099635665944,
+   "n": 300
+  },
+  "alt_err_m": {
+   "mean": 1.1299652981758117,
+   "p95": 2.889764189720154,
+   "max": 4.688268065452576,
+   "n": 300
+  },
+  "min_sep_3d_m": 59.54255562563353,
+  "round_compute_ms": {
+   "mean": 20.103593953000537,
+   "p95": 23.884435204672627,
+   "max": 28.008799999952316,
+   "n": 299
+  },
+  "fleet_decide_ms": {
+   "mean": 10.625728107309746,
+   "p95": 12.848137582477648,
+   "max": 14.935520011931658,
+   "n": 300
+  },
+  "uav_decide_ms": {
+   "mean": 5.312864053654873,
+   "p95": 6.739015980565455,
+   "max": 8.176415984053165,
+   "n": 600
+  },
+  "round_overruns": 0,
+  "rounds": 300,
+  "city": {
+   "min_clearance_m": 19.8278146982193,
+   "min_clearance_15m_m": 19.588358521461487,
+   "hold_s": [
+    62.0,
+    112.0
+   ],
+   "climb_m": [
+    235.8,
+    407.5
+   ]
+  }
+ },
+ "link": {
+  "window_s": 300.0,
+  "setpoint_hz": 50.00011426159389,
+  "hil_sensor_hz": 0.0,
+  "hil_gps_hz": 0.0,
+  "mode_drops": 0,
+  "disarms_in_air": 0,
+  "loop_late_4ms": 0,
+  "loop_max_late_ms": 0.0,
+  "sp_err_mean_m": 2.4769251024769665,
+  "sp_err_p95_m": 7.640904677586598,
+  "sp_err_max_m": 13.150391823007366,
+  "actuator_hz": 0.0,
+  "rtt_ms_mean": 3.7845768535044044,
+  "rtt_ms_p95": 4.245132785581518,
+  "rtt_ms_max": 8.846911980072036,
+  "rtt_n": 300,
+  "statustext": [],
+  "failsafe_msgs": [],
+  "geofence_msgs": []
+ },
+ "vlm": {
+  "mode": "off",
+  "share": "all",
+  "requests": 60,
+  "results": 60,
+  "errors": 0,
+  "dropped": 0,
+  "unanswered": 0,
+  "vlm_ms": {
+   "median": 2118.05,
+   "p90": 2195.97,
+   "max": 2268.5,
+   "n": 60
+  },
+  "req_to_apply_ms": {
+   "median": 3000.146269798279,
+   "p90": 3000.5305528640747,
+   "max": 3000.697135925293,
+   "n": 60
+  },
+  "belief_age_at_use_s": {
+   "median": 4.0,
+   "p90": 4.0,
+   "max": 4.0,
+   "n": 60
+  },
+  "hook_ms": {
+   "median": 0.6824160082032904,
+   "p90": 1.2395103898597881,
+   "max": 2.263232017867267,
+   "n": 300
+  },
+  "mem_used_peak_mb": 7051.66796875,
+  "worker_vm_hwm_mb": 2094.77734375,
+  "buildings_weighted": 60,
+  "weights_applied": 347,
+  "first_errors": []
+ },
+ "wall_s": 300.0,
+ "hil_server_vm_hwm_mb": 110.26953125,
+ "runner_vm_hwm_mb": 721.72265625,
+ "delta_J_pct": 5.988410310137822
+}

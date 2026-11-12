@@ -86,6 +86,7 @@ class NetConfig:
     p_loss: float = 0.0                # per-message loss probability on each backhaul link
     seq_relay: bool = False            # step 7 (10 Nov 2026): seq planners relay the decision list over the backhaul graph
     seq_chain: bool = False            # 10 Nov 2026: seq planners keep the PLANNED targets chained to the gateway (see agents._allowed)
+    seq_bestfirst: bool = False        # 12 Nov 2026: relayed seq planner, next decider = largest marginal gain (classic greedy)
                                        # (multi-hop, incl. the gateway); a UAV knows only decisions that can reach it
     bg_load: float = 0.0               # fraction of backhaul capacity used by other traffic
     require_gateway: bool = True

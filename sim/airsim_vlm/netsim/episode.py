@@ -247,7 +247,34 @@ def run_episode(cfg, method, seed, log_rounds=True, step_hook=None, agent_flags=
             if relay:
                 hd = relay_hops(bh['edges'], n + 1)
                 relay_msgs = sum((hd[a][b] if np.isfinite(hd[a][b]) else 0) for a, b in zip(deciding[:-1], deciding[1:]))
-            for q, i in enumerate(deciding):
+            bestfirst = relay and getattr(cfg, 'seq_bestfirst', False)
+            if bestfirst:    # 12 Nov 2026: every undecided UAV proposes its best target given the relayed list; the
+                # largest marginal gain commits (classic greedy on the partition matroid, so the 1/2 bound is kept).
+                # Messages: each proposal travels to the current list holder of its component (the last committer it can
+                # reach, else the gateway); the list itself is relayed from committer to committer as in the plain rule.
+                left, order, bf_msgs, holder = list(deciding), [], 0, {}
+                bf_lat = 0.0                   # proposals run in parallel: latency = sum over steps of the slowest proposal
+                while left:
+                    best = None; step_cpu = []
+                    for i in left:
+                        known = [ev for j, ev in zip(order, events) if np.isfinite(hd[j][i])]
+                        tc = time.perf_counter()
+                        tgt, ev = agents[i].decide(known)
+                        step_cpu.append(time.perf_counter() - tc)
+                        g = agents[i].last['gain'] if hasattr(agents[i], 'last') else 0.0
+                        h = [hd[i][j] for j in order if np.isfinite(hd[i][j])]
+                        bf_msgs += int(h[-1]) if h else (int(hd[i][n]) if np.isfinite(hd[i][n]) else 0)
+                        if best is None or (g, -i) > (best[0], -best[1]):
+                            best = (g, i, tgt, ev, agents[i].last)
+                    bf_lat += max(step_cpu)
+                    g, i, tgt, ev, last = best
+                    agents[i].last = last
+                    targets[i] = tgt; events.append(ev); order.append(i); left.remove(i)
+                relay_msgs = bf_msgs + sum((hd[a][b] if np.isfinite(hd[a][b]) else 0) for a, b in zip(order[:-1], order[1:]))
+                deciding_iter = []; cpu.append(bf_lat)
+            else:
+                deciding_iter = deciding
+            for q, i in enumerate(deciding_iter):
                 if relay:    # the list reaches i from every earlier decider in its backhaul component
                     known = [ev for j, ev in zip(deciding[:q], events) if np.isfinite(hd[j][i])]
                 else:

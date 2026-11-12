@@ -276,6 +276,27 @@ def fig_trust():
     return dict(aurc_maxp=au, aurc_mi=au2)
 
 
+def fig_bestfirst():
+    """Step 12 (results/vlm_damage/step12_summary.json): (a) paired margin over RAG vs fleet size for the fixed-order and
+    best-first relayed planners (chain rule on), three link ranges; (b) coordination messages per round."""
+    d = json.load(open(R / 'step12_summary.json'))['cells']; NS = (6, 8, 10, 12, 16)
+    fig, ax = plt.subplots(1, 2, figsize=(W1, 2.45))
+    ls = {'full': ':', 'limited': '--', 'sparse': '-'}; lab = {'full': 'default', 'limited': '250 m', 'sparse': '200 m'}
+    for L in ('full', 'limited', 'sparse'):
+        ax[0].plot(NS, [d[f'{n}|{L}']['bf_vs_rag_pct'] for n in NS], ls[L], color=C['maqac_s'], marker='o', ms=2.5, label=f'best-first, {lab[L]}')
+        ax[0].plot(NS, [d[f'{n}|{L}']['ch_vs_rag_pct'] for n in NS], ls[L], color=MUTED, marker='s', ms=2.5, lw=1, label=f'fixed order, {lab[L]}')
+    ax[0].axhline(0, color=INK, lw=0.6)
+    ax[0].set_xlabel('number of UAVs'); ax[0].set_ylabel(r'$J$ vs RAG (%, paired)'); ax[0].set_xticks(NS)
+    h, l = ax[0].get_legend_handles_labels()
+    fig.legend(h, l, loc='lower center', ncol=3, fontsize=5.6, handlelength=3.6, columnspacing=0.8, bbox_to_anchor=(0.5, 0.0))
+    ax[0].set_title('(a) margin over RAG', fontsize=7.5)
+    for m, col, mk, nm in (('maqac_seq_chain_bf', C['maqac_s'], 'o', 'best-first'), ('maqac_seq_chain', MUTED, 's', 'fixed order'), ('rag', C['rag'], '^', 'RAG')):
+        ax[1].plot(NS, [d[f'{n}|sparse']['msgs'][m] for n in NS], color=col, marker=mk, ms=3, label=nm)
+    ax[1].set_yscale('log'); ax[1].set_xlabel('number of UAVs'); ax[1].set_ylabel('messages per round (200 m)'); ax[1].set_xticks(NS)
+    ax[1].legend(fontsize=5.5, loc='upper left'); ax[1].set_title('(b) coordination cost', fontsize=7.5)
+    fig.tight_layout(w_pad=0.5, rect=(0, 0.17, 1, 1)); fig.savefig(OUT / 'fig_bestfirst.pdf'); plt.close(fig)
+
+
 if __name__ == '__main__':
     fig_links(); fig_perception()
     print('ECE in reliability figure', round(fig_reliability(), 4))
@@ -283,3 +304,4 @@ if __name__ == '__main__':
     print('jetson', fig_jetson())
     print('training', fig_training())
     print('trust', fig_trust())
+    fig_bestfirst()

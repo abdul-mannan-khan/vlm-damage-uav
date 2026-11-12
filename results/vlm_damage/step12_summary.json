@@ -1,0 +1,567 @@
+{
+ "cells": {
+  "6|full": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 166.96121700992038,
+    "maqac_seq_chain_bf": 167.1762695998524,
+    "rag": 166.6073022672693
+   },
+   "bf_vs_rag_pct": 0.3405570545874481,
+   "ch_vs_rag_pct": 0.21647792093153795,
+   "bf_vs_ch_pct": 0.1251009439532901,
+   "p_bf_gt_rag": 3.955326974391937e-05,
+   "wins_bf_vs_rag": 24,
+   "msgs": {
+    "maqac_seq_chain": 5.0,
+    "maqac_seq_chain_bf": 26.0,
+    "rag": 100.0
+   },
+   "disc": {
+    "maqac_seq_chain": 0.0,
+    "maqac_seq_chain_bf": 0.0,
+    "rag": 0.0
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 26.386324240153453,
+    "maqac_seq_chain_bf": 101.44247202815798,
+    "rag": 64.96107552185033
+   }
+  },
+  "6|limited": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 166.68032422793942,
+    "maqac_seq_chain_bf": 166.8824604550771,
+    "rag": 165.4608259782484
+   },
+   "bf_vs_rag_pct": 0.8618818286253137,
+   "ch_vs_rag_pct": 0.7448117428686223,
+   "bf_vs_ch_pct": 0.11644734794678031,
+   "p_bf_gt_rag": 4.163011908531189e-07,
+   "wins_bf_vs_rag": 28,
+   "msgs": {
+    "maqac_seq_chain": 10.214999999999998,
+    "maqac_seq_chain_bf": 49.56455555555555,
+    "rag": 66.22733333333333
+   },
+   "disc": {
+    "maqac_seq_chain": 15.566666666666666,
+    "maqac_seq_chain_bf": 12.366666666666667,
+    "rag": 2.1
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 25.710253441163033,
+    "maqac_seq_chain_bf": 105.35295766617895,
+    "rag": 62.949101311853155
+   }
+  },
+  "6|sparse": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 165.37210792373818,
+    "maqac_seq_chain_bf": 165.27523421453864,
+    "rag": 163.94854056262955
+   },
+   "bf_vs_rag_pct": 0.8032662798384135,
+   "ch_vs_rag_pct": 0.8780038586182006,
+   "bf_vs_ch_pct": -0.06660844323509217,
+   "p_bf_gt_rag": 0.00011581834405660629,
+   "wins_bf_vs_rag": 23,
+   "msgs": {
+    "maqac_seq_chain": 10.550000000000002,
+    "maqac_seq_chain_bf": 52.27166666666667,
+    "rag": 61.64777777777778
+   },
+   "disc": {
+    "maqac_seq_chain": 41.9,
+    "maqac_seq_chain_bf": 52.333333333333336,
+    "rag": 8.4
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 24.437123861344944,
+    "maqac_seq_chain_bf": 99.21165752299648,
+    "rag": 58.77596413900353
+   }
+  },
+  "8|full": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 163.06370694048562,
+    "maqac_seq_chain_bf": 163.51828530543534,
+    "rag": 162.23415935834424
+   },
+   "bf_vs_rag_pct": 0.7985469998066049,
+   "ch_vs_rag_pct": 0.5216862664024712,
+   "bf_vs_ch_pct": 0.27818375909394677,
+   "p_bf_gt_rag": 1.952052116394043e-05,
+   "wins_bf_vs_rag": 25,
+   "msgs": {
+    "maqac_seq_chain": 7.0,
+    "maqac_seq_chain_bf": 43.0,
+    "rag": 224.0
+   },
+   "disc": {
+    "maqac_seq_chain": 0.0,
+    "maqac_seq_chain_bf": 0.0,
+    "rag": 0.0
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 32.959297149442136,
+    "maqac_seq_chain_bf": 173.98218465053168,
+    "rag": 85.19811340858642
+   }
+  },
+  "8|limited": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 161.76247176727696,
+    "maqac_seq_chain_bf": 161.9608784269284,
+    "rag": 158.38285254411056
+   },
+   "bf_vs_rag_pct": 2.278425004708812,
+   "ch_vs_rag_pct": 2.149623314173422,
+   "bf_vs_ch_pct": 0.13199057341203735,
+   "p_bf_gt_rag": 4.0046870708465576e-08,
+   "wins_bf_vs_rag": 28,
+   "msgs": {
+    "maqac_seq_chain": 13.869777777777776,
+    "maqac_seq_chain_bf": 85.73266666666667,
+    "rag": 145.45066666666665
+   },
+   "disc": {
+    "maqac_seq_chain": 16.666666666666668,
+    "maqac_seq_chain_bf": 14.1,
+    "rag": 0.8
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 33.54771989444271,
+    "maqac_seq_chain_bf": 160.36315982801736,
+    "rag": 81.56396534063647
+   }
+  },
+  "8|sparse": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 159.3210059785033,
+    "maqac_seq_chain_bf": 159.25639850622923,
+    "rag": 155.94461261494146
+   },
+   "bf_vs_rag_pct": 2.145315811223074,
+   "ch_vs_rag_pct": 2.180721552081555,
+   "bf_vs_ch_pct": -0.02968216063665683,
+   "p_bf_gt_rag": 3.458932042121887e-06,
+   "wins_bf_vs_rag": 26,
+   "msgs": {
+    "maqac_seq_chain": 14.477444444444444,
+    "maqac_seq_chain_bf": 94.5521111111111,
+    "rag": 130.63777777777779
+   },
+   "disc": {
+    "maqac_seq_chain": 79.4,
+    "maqac_seq_chain_bf": 73.53333333333333,
+    "rag": 5.666666666666667
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 31.71502987595482,
+    "maqac_seq_chain_bf": 169.68671987407527,
+    "rag": 76.69148203919437
+   }
+  },
+  "10|full": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 157.04164116697393,
+    "maqac_seq_chain_bf": 158.62507851457354,
+    "rag": 157.3035814354372
+   },
+   "bf_vs_rag_pct": 0.8562007558389858,
+   "ch_vs_rag_pct": -0.16107324955375837,
+   "bf_vs_ch_pct": 1.0214859712948021,
+   "p_bf_gt_rag": 0.00011581834405660629,
+   "wins_bf_vs_rag": 23,
+   "msgs": {
+    "maqac_seq_chain": 9.0,
+    "maqac_seq_chain_bf": 64.0,
+    "rag": 420.0
+   },
+   "disc": {
+    "maqac_seq_chain": 0.0,
+    "maqac_seq_chain_bf": 0.0,
+    "rag": 0.0
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 39.02932170387875,
+    "maqac_seq_chain_bf": 268.9543263469564,
+    "rag": 105.67494962307521
+   }
+  },
+  "10|limited": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 155.81715067101007,
+    "maqac_seq_chain_bf": 157.917217161914,
+    "rag": 149.31184341474744
+   },
+   "bf_vs_rag_pct": 5.89829663163617,
+   "ch_vs_rag_pct": 4.476889179221041,
+   "bf_vs_ch_pct": 1.3550404398005458,
+   "p_bf_gt_rag": 2.7939677238464355e-09,
+   "wins_bf_vs_rag": 29,
+   "msgs": {
+    "maqac_seq_chain": 17.42877777777778,
+    "maqac_seq_chain_bf": 127.38677777777777,
+    "rag": 269.3193333333333
+   },
+   "disc": {
+    "maqac_seq_chain": 11.7,
+    "maqac_seq_chain_bf": 10.633333333333333,
+    "rag": 0.3
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 40.61554084728576,
+    "maqac_seq_chain_bf": 252.70942616659315,
+    "rag": 98.3591491607949
+   }
+  },
+  "10|sparse": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 153.47580791799314,
+    "maqac_seq_chain_bf": 155.159703310121,
+    "rag": 145.77608308719073
+   },
+   "bf_vs_rag_pct": 6.612395725897762,
+   "ch_vs_rag_pct": 5.45093823719803,
+   "bf_vs_ch_pct": 1.1051827925170017,
+   "p_bf_gt_rag": 9.313225746154785e-10,
+   "wins_bf_vs_rag": 30,
+   "msgs": {
+    "maqac_seq_chain": 17.97533333333333,
+    "maqac_seq_chain_bf": 147.8133333333334,
+    "rag": 232.37777777777777
+   },
+   "disc": {
+    "maqac_seq_chain": 73.86666666666666,
+    "maqac_seq_chain_bf": 83.23333333333333,
+    "rag": 3.3333333333333335
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 41.18242296395409,
+    "maqac_seq_chain_bf": 251.62507717308796,
+    "rag": 95.74011017767607
+   }
+  },
+  "12|full": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 146.74991371846974,
+    "maqac_seq_chain_bf": 150.93105460818134,
+    "rag": 148.01744302474415
+   },
+   "bf_vs_rag_pct": 2.0152255121093443,
+   "ch_vs_rag_pct": -0.8860036359833138,
+   "bf_vs_ch_pct": 2.949234286878538,
+   "p_bf_gt_rag": 1.9278377294540405e-07,
+   "wins_bf_vs_rag": 26,
+   "msgs": {
+    "maqac_seq_chain": 11.0,
+    "maqac_seq_chain_bf": 89.0,
+    "rag": 704.0
+   },
+   "disc": {
+    "maqac_seq_chain": 0.0,
+    "maqac_seq_chain_bf": 0.0,
+    "rag": 0.0
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 45.43949747672822,
+    "maqac_seq_chain_bf": 402.7807850220706,
+    "rag": 159.40503537716964
+   }
+  },
+  "12|limited": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 146.36423518527548,
+    "maqac_seq_chain_bf": 150.5523263291796,
+    "rag": 135.42272564408873
+   },
+   "bf_vs_rag_pct": 11.546470943400307,
+   "ch_vs_rag_pct": 8.32077905495351,
+   "bf_vs_ch_pct": 2.9592499541482535,
+   "p_bf_gt_rag": 9.313225746154785e-10,
+   "wins_bf_vs_rag": 30,
+   "msgs": {
+    "maqac_seq_chain": 20.379,
+    "maqac_seq_chain_bf": 171.28277777777777,
+    "rag": 453.89955555555554
+   },
+   "disc": {
+    "maqac_seq_chain": 8.166666666666666,
+    "maqac_seq_chain_bf": 5.2,
+    "rag": 0.0
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 52.432145598318634,
+    "maqac_seq_chain_bf": 388.8428192508355,
+    "rag": 122.2516179838373
+   }
+  },
+  "12|sparse": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 144.45468346786075,
+    "maqac_seq_chain_bf": 147.43744660347156,
+    "rag": 129.76261089169685
+   },
+   "bf_vs_rag_pct": 14.098209379277252,
+   "ch_vs_rag_pct": 11.726872796615122,
+   "bf_vs_ch_pct": 2.0987245197703355,
+   "p_bf_gt_rag": 9.313225746154785e-10,
+   "wins_bf_vs_rag": 30,
+   "msgs": {
+    "maqac_seq_chain": 22.078222222222223,
+    "maqac_seq_chain_bf": 208.6307777777778,
+    "rag": 381.88177777777776
+   },
+   "disc": {
+    "maqac_seq_chain": 64.56666666666666,
+    "maqac_seq_chain_bf": 47.666666666666664,
+    "rag": 2.3
+   },
+   "collisions": {
+    "maqac_seq_chain": 0,
+    "maqac_seq_chain_bf": 0,
+    "rag": 0
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 45.74079053812764,
+    "maqac_seq_chain_bf": 379.95420824428504,
+    "rag": 116.59281770041626
+   }
+  },
+  "16|full": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 123.12954788169237,
+    "maqac_seq_chain_bf": 130.73975320016328,
+    "rag": 127.25553135405812
+   },
+   "bf_vs_rag_pct": 2.884642050840822,
+   "ch_vs_rag_pct": -3.190596665136569,
+   "bf_vs_ch_pct": 6.377281458293795,
+   "p_bf_gt_rag": 2.5723129510879517e-06,
+   "wins_bf_vs_rag": 26,
+   "msgs": {
+    "maqac_seq_chain": 15.0,
+    "maqac_seq_chain_bf": 151.0,
+    "rag": 1600.0
+   },
+   "disc": {
+    "maqac_seq_chain": 0.0,
+    "maqac_seq_chain_bf": 0.0,
+    "rag": 0.0
+   },
+   "collisions": {
+    "maqac_seq_chain": 4,
+    "maqac_seq_chain_bf": 4,
+    "rag": 4
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 47.549125489261414,
+    "maqac_seq_chain_bf": 618.4669901193378,
+    "rag": 206.18709293688235
+   }
+  },
+  "16|limited": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 122.72699219852551,
+    "maqac_seq_chain_bf": 129.7629351267146,
+    "rag": 107.98097260437393
+   },
+   "bf_vs_rag_pct": 21.518731363681347,
+   "ch_vs_rag_pct": 14.672034514156731,
+   "bf_vs_ch_pct": 5.907772683295744,
+   "p_bf_gt_rag": 9.313225746154785e-10,
+   "wins_bf_vs_rag": 30,
+   "msgs": {
+    "maqac_seq_chain": 26.245666666666672,
+    "maqac_seq_chain_bf": 272.12677777777776,
+    "rag": 1040.4282222222223
+   },
+   "disc": {
+    "maqac_seq_chain": 3.1666666666666665,
+    "maqac_seq_chain_bf": 0.9666666666666667,
+    "rag": 0.0
+   },
+   "collisions": {
+    "maqac_seq_chain": 4,
+    "maqac_seq_chain_bf": 4,
+    "rag": 4
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 47.68779952586112,
+    "maqac_seq_chain_bf": 610.7515060371308,
+    "rag": 177.6281042633733
+   }
+  },
+  "16|sparse": {
+   "pairs": 30,
+   "J": {
+    "maqac_seq_chain": 121.78674186550634,
+    "maqac_seq_chain_bf": 127.65314732246908,
+    "rag": 103.5517504486067
+   },
+   "bf_vs_rag_pct": 25.401124331540704,
+   "ch_vs_rag_pct": 19.06171485488733,
+   "bf_vs_ch_pct": 5.152530041125785,
+   "p_bf_gt_rag": 9.313225746154785e-10,
+   "wins_bf_vs_rag": 30,
+   "msgs": {
+    "maqac_seq_chain": 30.453777777777777,
+    "maqac_seq_chain_bf": 338.2518888888889,
+    "rag": 849.405111111111
+   },
+   "disc": {
+    "maqac_seq_chain": 35.03333333333333,
+    "maqac_seq_chain_bf": 18.7,
+    "rag": 0.8666666666666667
+   },
+   "collisions": {
+    "maqac_seq_chain": 4,
+    "maqac_seq_chain_bf": 4,
+    "rag": 4
+   },
+   "decide_ms": {
+    "maqac_seq_chain": 48.46064217843943,
+    "maqac_seq_chain_bf": 464.31449324513477,
+    "rag": 141.18465595705328
+   }
+  }
+ },
+ "H12a": {
+  "p": {
+   "limited": 2.0133331894746958e-17,
+   "sparse": 2.5049246413798293e-10
+  },
+  "p_holm": {
+   "limited": 4.0266663789493916e-17,
+   "sparse": 2.5049246413798293e-10
+  },
+  "pass_": true
+ },
+ "H12b": {
+  "p_holm": {
+   "8|limited": 8.009374141693115e-08,
+   "10|limited": 8.381903171539307e-09,
+   "12|limited": 7.450580596923828e-09,
+   "16|limited": 7.450580596923828e-09,
+   "8|sparse": 3.458932042121887e-06,
+   "10|sparse": 7.450580596923828e-09,
+   "12|sparse": 7.450580596923828e-09,
+   "16|sparse": 7.450580596923828e-09
+  },
+  "pass_": true
+ },
+ "H12c": {
+  "margins": [
+   0.8032662798384135,
+   2.145315811223074,
+   6.612395725897762,
+   14.098209379277252,
+   25.401124331540704
+  ],
+  "rho": 0.9999999999999999,
+  "pass_": true
+ },
+ "H12d": {
+  "pass_": true,
+  "ratio": {
+   "6|full": 0.26,
+   "6|limited": 0.7484002912526885,
+   "6|sparse": 0.8479083683290377,
+   "8|full": 0.19196428571428573,
+   "8|limited": 0.5894278014080376,
+   "8|sparse": 0.723773113103237,
+   "10|full": 0.1523809523809524,
+   "10|limited": 0.47299529596010353,
+   "10|sparse": 0.6360906569761885,
+   "12|full": 0.12642045454545456,
+   "12|limited": 0.37735832891075266,
+   "12|sparse": 0.5463229457865961,
+   "16|full": 0.094375,
+   "16|limited": 0.26155266837778546,
+   "16|sparse": 0.3982221021091102
+  }
+ },
+ "H12e": {
+  "pass_": false
+ },
+ "H12f": {
+  "margins": [
+   0.3405570545874481,
+   0.7985469998066049,
+   0.8562007558389858,
+   2.0152255121093443,
+   2.884642050840822
+  ],
+  "pass_": true
+ }
+}

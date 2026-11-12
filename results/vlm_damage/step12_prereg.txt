@@ -1,0 +1,24 @@
+Step 12 pre-registration: closing the gap to RAG (written 12 Nov 2026, before the grid run; only a 6-episode smoke
+test with seed 30000, n = 6, was run to check the code: not used in any test below).
+
+Why: reviewers' point 3 (user's list, 12 Nov): the margin over RAG is small (+0.7 % at n = 6, 250 m).
+What is new: MAQAC-S-BF, the relayed sequential planner with a best-first order: in each round every undecided UAV proposes
+its best target given the decision list relayed to it, and the largest marginal gain commits (classic greedy on the
+partition matroid; the 1/2 guarantee holds on any connected graph, as for the fixed order). With the chain rule on
+(as in step 9). Messages counted: every proposal relayed to the list holder of its component, plus the list relays.
+
+Grid: n in {6, 8, 10, 12, 16} x links {full (default range), limited 250 m, sparse 200 m} x methods {maqac_seq_chain
+(step 9 rule, fixed order), maqac_seq_chain_bf (new), rag} x seeds 30000..30029 (paired) = 1,350 episodes.
+Scenario as step 8/9: disaster, 600 m square, gateway at the centre, T = 300 s, onboard perception, no take-off.
+Code: scripts/step8_netsim_batch.py with STEP12=1; sim/airsim_vlm/netsim (seq_bestfirst). One Vast CPU box.
+
+Tests (paired over seeds; one-sided Wilcoxon signed-rank; Holm within each hypothesis):
+  H12a BF vs fixed order: J(BF) > J(chain) on limited and sparse links, pooled over n per link, p < 0.01.
+  H12b BF vs RAG: J(BF) > J(RAG) in every cell with n >= 8 on limited and sparse links (8 cells), Holm p < 0.05.
+  H12c growth: on sparse links the mean paired margin BF - RAG (%) increases with n (Spearman rho > 0 over the 5 n
+       values, and the n = 16 margin > the n = 6 margin).
+  H12d cost: BF uses fewer coordination messages per round than RAG in every cell (means).
+  H12e safety of the formation: disconnected UAV-seconds of BF <= 1.1 x those of the fixed-order chain, every
+       limited/sparse cell (means), and 0 collisions.
+  H12f no harm on full links: BF within 1 % of RAG (mean paired %) for every n.
+Reported whatever the outcome; numbers enter the paper only from results/vlm_damage/step12_summary.json.

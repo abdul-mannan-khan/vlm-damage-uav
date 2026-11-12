@@ -19,13 +19,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 NS, LINKS, METHODS, SEEDS = (6, 8, 10), {'full': None, 'limited': 250.0}, ('maqac_seq', 'rag'), range(30000, 30030)
+if os.environ.get('STEP12'):                                  # step 12 grid (12 Nov 2026, prereg step12_prereg.txt)
+    NS, LINKS = (6, 8, 10, 12, 16), {'full': None, 'limited': 250.0, 'sparse': 200.0}
 KEEP = ('J_session', 'coord_iters', 'coord_iters_max', 'coord_msgs', 'decide_ms', 'decide_ms_p95', 'disconnected_uav_s',
         'near_misses', 'collisions', 'mean_hops', 'users_served', 'tx_msgs')
 
 
 def job(k):
     n, link, method, seed = k
-    chain = method == 'maqac_seq_chain'                       # step 9 (10 Nov 2026): seq planner with the chain rule
+    chain = method in ('maqac_seq_chain', 'maqac_seq_chain_bf')   # step 9 (10 Nov 2026): seq planner with the chain rule
+    bf = method in ('maqac_seq_bf', 'maqac_seq_chain_bf')          # step 12 (12 Nov 2026): best-first relayed order
     sys.path.insert(0, os.environ['NETSIM'])
     from sim import realistic
     from episode import run_episode
@@ -34,9 +37,9 @@ def job(k):
               gateway=(L / 2, L / 2), n_users=int(round(200 * s)), arrival_rate=0.1 * s, takeoff=False)
     if LINKS[link] is not None:
         kw['bh_range'] = LINKS[link]
-    cfg = replace(realistic(**kw), seq_relay=True, seq_chain=chain)
+    cfg = replace(realistic(**kw), seq_relay=True, seq_chain=chain, seq_bestfirst=bf)
     t0 = time.time()
-    r = run_episode(cfg, 'maqac_seq' if chain else method, seed)
+    r = run_episode(cfg, 'maqac_seq' if (chain or bf) else method, seed)
     return dict(n=n, link=link, method=method, seed=seed, bh_range=cfg.bh_range, wall_s=time.time() - t0,
                 host=platform.node(), **{q: r.get(q) for q in KEEP})
 

@@ -1,0 +1,48 @@
+{
+ "SettingsVersion": 1.2,
+ "SimMode": "Multirotor",
+ "ClockSpeed": 1.0,
+ "ViewMode": "NoDisplay",
+ "ApiServerPort": 41451,
+ "Vehicles": {
+  "UAV0": {
+   "VehicleType": "PX4Multirotor",
+   "X": 0,
+   "Y": -4,
+   "Z": 0,
+   "Yaw": 0,
+   "UseSerial": false,
+   "LockStep": false,
+   "UseTcp": true,
+   "TcpPort": 4560,
+   "LocalHostIp": "192.168.55.100",
+   "ControlIp": "127.0.0.1",
+   "ControlPortLocal": 14540,
+   "ControlPortRemote": 14580,
+   "Cameras": {
+    "down": {
+     "CaptureSettings": [
+      {
+       "ImageType": 0,
+       "Width": 640,
+       "Height": 480,
+       "FOV_Degrees": 60
+      },
+      {
+       "ImageType": 5,
+       "Width": 640,
+       "Height": 480,
+       "FOV_Degrees": 60
+      }
+     ],
+     "X": 0.0,
+     "Y": 0.0,
+     "Z": 0.3,
+     "Pitch": -90.0,
+     "Roll": 0.0,
+     "Yaw": 0.0
+    }
+   }
+  }
+ }
+}

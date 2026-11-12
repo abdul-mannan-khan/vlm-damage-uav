@@ -1,0 +1,240 @@
+{
+ "method": "maqac_seq",
+ "chain": true,
+ "seed": 20002,
+ "vlm_planner": "prior",
+ "vlm_share": "all",
+ "vlm_model": "fake",
+ "vlm_frames": "fake",
+ "frame_every_s": 5,
+ "scenario": "disaster",
+ "n_uav": 2,
+ "T": 30,
+ "L": 600.0,
+ "n_users": 72,
+ "arrival_rate": 0.036,
+ "altitude": 100.0,
+ "v_cap": 14.0,
+ "city": "/home/it-services/kfupm_ws/ras-multi-agent-6g-uav/sim/airsim_vlm/hil_vlm/../survey/heightmap.npz",
+ "origin_ne": [
+  40.0,
+  -10.0
+ ],
+ "keepout": [
+  [
+   -80.0,
+   36.0,
+   -339.0,
+   -235.0,
+   240.0
+  ]
+ ],
+ "backend": "fake",
+ "aborted": false,
+ "note": "",
+ "host": "EBY03019U09553 x86_64",
+ "hil": {
+  "qos_score": 156.3383145279539,
+  "qos_score_realised": 157.0,
+  "qos_max": 157.0,
+  "users_total": 73,
+  "users_served": 73,
+  "sessions_expected": 72.65466762446145,
+  "mean_wait_s": 0.7249020782042169,
+  "emergency_total": 26,
+  "emergency_served": 26,
+  "emergency_score": 77.83661740767118,
+  "emergency_wait_s": 0.07692307692307693,
+  "realtime_total": 32,
+  "realtime_served": 32,
+  "realtime_score": 63.58513726342329,
+  "realtime_wait_s": 0.71875,
+  "besteffort_total": 15,
+  "besteffort_served": 15,
+  "besteffort_score": 14.9165598568594,
+  "besteffort_wait_s": 1.861190113927189,
+  "continuity": 0.9050751879699248,
+  "blocked": 133,
+  "interf_outage": 0,
+  "disconnected_uav_s": 0,
+  "rtb": 0,
+  "collisions": 0,
+  "near_misses": 0,
+  "energy_wh": 8.587915625028243,
+  "score_per_wh": 18.204453950656944,
+  "distance_m": 545.456420062436,
+  "mean_hops": 1.0,
+  "mean_offload_lat_s": null,
+  "mean_attached": 32.1,
+  "failed_uavs": 0,
+  "J_session": 151.1255616848645,
+  "session_frac_mean": 0.9493193102965191,
+  "users_abandoned": 0,
+  "swap_wait_s": 0,
+  "emergency_J_session": 77.1,
+  "realtime_J_session": 60.8505040664372,
+  "besteffort_J_session": 13.175057618427283,
+  "tx_msgs": 180,
+  "tx_attempts": 180,
+  "tower_climb_s": 0,
+  "coord_iters": 2.0,
+  "coord_iters_max": 2,
+  "coord_msgs": 1.0,
+  "decide_ms": 1.0427159567674003,
+  "decide_ms_p95": 1.1779391439631581,
+  "record_coverage": 1.0,
+  "record_age_s": 0.5,
+  "method": "maqac_seq",
+  "config": "disaster_2uav",
+  "seed": 20002,
+  "n_uav": 2,
+  "scenario": "disaster",
+  "perception": "onboard",
+  "episode_time_s": 30.0
+ },
+ "kinematic": {
+  "J_session": 146.4325739234689,
+  "qos_score": 156.5219914175126,
+  "users_served": 73,
+  "mean_wait_s": 0.5879157768343539,
+  "energy_wh": 7.975220163108011,
+  "distance_m": 585.5536024875487,
+  "continuity": 0.8652946679139383,
+  "session_frac_mean": 0.9055408023981614,
+  "coord_msgs": 1.0,
+  "coord_iters": 2.0,
+  "decide_ms": 1.004424939552943,
+  "decide_ms_p95": 1.1229353258386254,
+  "collisions": 0,
+  "rtb": 0,
+  "disconnected_uav_s": 0
+ },
+ "replay_twin": {
+  "J_session": 146.4325739234689,
+  "qos_score": 156.5219914175126,
+  "users_served": 73,
+  "mean_wait_s": 0.5879157768343539,
+  "energy_wh": 7.975220163108011,
+  "distance_m": 585.5536024875487,
+  "continuity": 0.8652946679139383,
+  "session_frac_mean": 0.9055408023981614,
+  "coord_msgs": 1.0,
+  "coord_iters": 2.0,
+  "decide_ms": 1.0420251482476792,
+  "decide_ms_p95": 1.1486923787742853,
+  "collisions": 0,
+  "rtb": 0,
+  "disconnected_uav_s": 0
+ },
+ "kin_wall_s": 0.1,
+ "flight": {
+  "track_err_h_m": {
+   "mean": 5.5613916746901655,
+   "p95": 13.948111845105942,
+   "max": 13.98500579861536,
+   "n": 30
+  },
+  "track_err_3d_m": {
+   "mean": 2.975829401816227,
+   "p95": 11.454009988879246,
+   "max": 12.715120059789593,
+   "n": 30
+  },
+  "alt_err_m": {
+   "mean": 0.7734858702012971,
+   "p95": 3.4845296369141754,
+   "max": 5.522105090608392,
+   "n": 30
+  },
+  "min_sep_3d_m": 54.72213146161441,
+  "round_compute_ms": {
+   "mean": 3.543811721791481,
+   "p95": 3.9176092483103275,
+   "max": 4.262242931872606,
+   "n": 29
+  },
+  "fleet_decide_ms": {
+   "mean": 1.9244498573243618,
+   "p95": 2.1479083923622966,
+   "max": 2.357564866542816,
+   "n": 30
+  },
+  "uav_decide_ms": {
+   "mean": 0.9622249286621809,
+   "p95": 1.123140309937298,
+   "max": 1.2368420138955116,
+   "n": 60
+  },
+  "round_overruns": 0,
+  "rounds": 30,
+  "city": {
+   "min_clearance_m": 56.27710799796213,
+   "min_clearance_15m_m": 52.931488544525564,
+   "hold_s": [
+    13.0,
+    8.0
+   ],
+   "climb_m": [
+    37.9,
+    35.8
+   ]
+  }
+ },
+ "link": {
+  "window_s": 30.0,
+  "setpoint_hz": 50.00002655978173,
+  "hil_sensor_hz": 0.0,
+  "hil_gps_hz": 0.0,
+  "mode_drops": 0,
+  "disarms_in_air": 0,
+  "loop_late_4ms": 0,
+  "loop_max_late_ms": 0.0,
+  "sp_err_mean_m": 2.6820356256512476,
+  "sp_err_p95_m": 10.969320013230957,
+  "sp_err_max_m": 13.64676762700844
+ },
+ "vlm": {
+  "mode": "prior",
+  "share": "all",
+  "requests": 6,
+  "results": 6,
+  "errors": 0,
+  "dropped": 0,
+  "unanswered": 0,
+  "vlm_ms": {
+   "median": 1789.35,
+   "p90": 1791.3,
+   "max": 1791.8,
+   "n": 6
+  },
+  "req_to_apply_ms": {
+   "median": 2000.0616312026978,
+   "p90": 2000.0810623168945,
+   "max": 2000.0815391540527,
+   "n": 6
+  },
+  "belief_age_at_use_s": {
+   "median": 3.0,
+   "p90": 3.0,
+   "max": 3.0,
+   "n": 6
+  },
+  "hook_ms": {
+   "median": 0.15543517656624317,
+   "p90": 0.2620774786919356,
+   "max": 1.1346950195729733,
+   "n": 30
+  },
+  "mem_used_peak_mb": 12105.8359375,
+  "worker_vm_hwm_mb": 70.20703125,
+  "buildings_weighted": 10,
+  "weights_applied": 20,
+  "first_errors": []
+ },
+ "wall_s": 30.0,
+ "hil_server_vm_hwm_mb": 103.92578125,
+ "runner_vm_hwm_mb": 732.2109375,
+ "delta_J_pct": 3.204879649147132,
+ "delta_J_vs_replay_pct": 3.204879649147132,
+ "delta_J_replay_vs_kin_pct": 0.0
+}

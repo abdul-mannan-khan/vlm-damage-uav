@@ -1,0 +1,1199 @@
+[
+{
+"name": "BG_Building_B10",
+"N": 0.27,
+"E": 28.92,
+"D": 2.53,
+"seg_id": 1
+},
+{
+"name": "Building_9_13",
+"N": 96.58,
+"E": 25.93,
+"D": 2.35,
+"seg_id": 2
+},
+{
+"name": "Building_C_Bot_Straight_B13",
+"N": 1.44,
+"E": -78.1,
+"D": -13.75,
+"seg_id": 3
+},
+{
+"name": "Building_C_Bot_Straight_B19",
+"N": 1.44,
+"E": -78.1,
+"D": -21.68,
+"seg_id": 4
+},
+{
+"name": "Building_C_Bot_Straight_B2",
+"N": 1.44,
+"E": -78.1,
+"D": 2.08,
+"seg_id": 5
+},
+{
+"name": "Building_C_Bot_Straight_B7",
+"N": 1.44,
+"E": -78.1,
+"D": -5.76,
+"seg_id": 6
+},
+{
+"name": "Apartment_wBalconies_26",
+"N": 93.16,
+"E": -69.06,
+"D": 2.15,
+"seg_id": 7
+},
+{
+"name": "Building_C_Bot_Straight_B12",
+"N": 1.44,
+"E": -86.1,
+"D": -13.75,
+"seg_id": 8
+},
+{
+"name": "Building_C_Bot_Straight_B18",
+"N": 1.44,
+"E": -86.1,
+"D": -21.68,
+"seg_id": 9
+},
+{
+"name": "Building_C_Bot_Straight_B6",
+"N": 1.44,
+"E": -86.1,
+"D": -5.76,
+"seg_id": 10
+},
+{
+"name": "Building_C_Bot_Straight_B_19",
+"N": 1.44,
+"E": -86.1,
+"D": 2.08,
+"seg_id": 11
+},
+{
+"name": "Building_C_Bot_Straight_B14",
+"N": -3.51,
+"E": -84.41,
+"D": -13.75,
+"seg_id": 12
+},
+{
+"name": "Building_C_Bot_Straight_B20",
+"N": -3.51,
+"E": -84.41,
+"D": -21.68,
+"seg_id": 13
+},
+{
+"name": "Building_C_Bot_Straight_B8",
+"N": -3.51,
+"E": -84.41,
+"D": -5.76,
+"seg_id": 14
+},
+{
+"name": "Building_C_Bot_Straight_B3",
+"N": -3.52,
+"E": -84.44,
+"D": 2.08,
+"seg_id": 15
+},
+{
+"name": "Building_C_Bot_Straight_A_14",
+"N": 1.45,
+"E": -96.04,
+"D": 2.09,
+"seg_id": 16
+},
+{
+"name": "Building_C_Bot_Straight_B11",
+"N": 1.44,
+"E": -96.05,
+"D": -5.76,
+"seg_id": 17
+},
+{
+"name": "Building_C_Bot_Straight_B17",
+"N": 1.44,
+"E": -96.05,
+"D": -13.75,
+"seg_id": 18
+},
+{
+"name": "Building_C_Bot_Straight_B23",
+"N": 1.44,
+"E": -96.05,
+"D": -21.68,
+"seg_id": 19
+},
+{
+"name": "Building_2_7",
+"N": 135.68,
+"E": -3.59,
+"D": 1.78,
+"seg_id": 20
+},
+{
+"name": "Building_C_Bot_Straight_B15",
+"N": -9.7,
+"E": -92.31,
+"D": -13.75,
+"seg_id": 21
+},
+{
+"name": "Building_C_Bot_Straight_B21",
+"N": -9.7,
+"E": -92.31,
+"D": -21.68,
+"seg_id": 22
+},
+{
+"name": "Building_C_Bot_Straight_B4",
+"N": -9.7,
+"E": -92.31,
+"D": 2.08,
+"seg_id": 23
+},
+{
+"name": "Building_C_Bot_Straight_B9",
+"N": -9.7,
+"E": -92.31,
+"D": -5.76,
+"seg_id": 24
+},
+{
+"name": "Building_3_01_42",
+"N": 124.18,
+"E": 55.18,
+"D": 2.31,
+"seg_id": 25
+},
+{
+"name": "Building_C_Bot_Straight_B10",
+"N": -19.64,
+"E": -104.98,
+"D": -5.76,
+"seg_id": 26
+},
+{
+"name": "Building_C_Bot_Straight_B16",
+"N": -19.64,
+"E": -104.98,
+"D": -13.75,
+"seg_id": 27
+},
+{
+"name": "Building_C_Bot_Straight_B22",
+"N": -19.64,
+"E": -104.98,
+"D": -21.68,
+"seg_id": 28
+},
+{
+"name": "Building_C_Bot_Straight_B5",
+"N": -19.64,
+"E": -104.98,
+"D": 2.08,
+"seg_id": 29
+},
+{
+"name": "BG_Building_A4_73",
+"N": 147.61,
+"E": -46.83,
+"D": 2.35,
+"seg_id": 30
+},
+{
+"name": "BG_Building_A5",
+"N": 148.09,
+"E": -46.89,
+"D": -42.08,
+"seg_id": 31
+},
+{
+"name": "building_1_01_39",
+"N": -77.0,
+"E": -4.05,
+"D": 1.95,
+"seg_id": 32
+},
+{
+"name": "Apartment_Square_Tower2_107",
+"N": 57.32,
+"E": 111.8,
+"D": 1.84,
+"seg_id": 33
+},
+{
+"name": "SM_MERGED_Building_F_Bot_Door_A65_Blueprint01_1850",
+"N": -38.76,
+"E": 106.59,
+"D": -68.53,
+"seg_id": 34
+},
+{
+"name": "SM_MERGED_Building_C_Mid_CornerIn_C264_Blueprint",
+"N": 192.66,
+"E": 5.23,
+"D": -102.25,
+"seg_id": 35
+},
+{
+"name": "Building_4_30",
+"N": -95.09,
+"E": 66.94,
+"D": 2.38,
+"seg_id": 36
+},
+{
+"name": "Building_4_02_36",
+"N": -95.5,
+"E": 72.51,
+"D": -25.62,
+"seg_id": 37
+},
+{
+"name": "SM_MERGED_Building_E_Bot_Door_A6_Blueprint_11",
+"N": 58.72,
+"E": -171.38,
+"D": -7.65,
+"seg_id": 38
+},
+{
+"name": "Apartment_Square_Tower_32",
+"N": -60.34,
+"E": 119.32,
+"D": 2.25,
+"seg_id": 39
+},
+{
+"name": "Apartment_LShape2",
+"N": -15.85,
+"E": 147.14,
+"D": 2.25,
+"seg_id": 40
+},
+{
+"name": "Building_7_48",
+"N": 108.91,
+"E": 145.47,
+"D": 2.0,
+"seg_id": 41
+},
+{
+"name": "Apartment_Square_Tower3",
+"N": 57.32,
+"E": 164.98,
+"D": 1.84,
+"seg_id": 42
+},
+{
+"name": "Apartment_LShape3",
+"N": -15.85,
+"E": 156.96,
+"D": 2.25,
+"seg_id": 43
+},
+{
+"name": "BG_Building_B5",
+"N": -40.04,
+"E": -167.01,
+"D": 2.3,
+"seg_id": 44
+},
+{
+"name": "Building_B_Bot_CornerOut_A58_Blueprint2",
+"N": -131.11,
+"E": 47.04,
+"D": -46.11,
+"seg_id": 45
+},
+{
+"name": "Building_6_3",
+"N": -56.26,
+"E": 148.2,
+"D": 2.38,
+"seg_id": 46
+},
+{
+"name": "Apartment_LShape4",
+"N": -15.85,
+"E": 166.74,
+"D": 2.25,
+"seg_id": 47
+},
+{
+"name": "Building_9_02_15",
+"N": -114.61,
+"E": 100.26,
+"D": 2.35,
+"seg_id": 48
+},
+{
+"name": "BG_Building_C2_81",
+"N": -147.12,
+"E": -43.38,
+"D": 2.35,
+"seg_id": 49
+},
+{
+"name": "Building_4_5",
+"N": 6.0,
+"E": -207.12,
+"D": 1.99,
+"seg_id": 50
+},
+{
+"name": "Apartment_LShape_98",
+"N": -43.95,
+"E": 175.62,
+"D": 2.25,
+"seg_id": 51
+},
+{
+"name": "Apartment_LShape6",
+"N": -15.85,
+"E": 186.51,
+"D": 2.25,
+"seg_id": 52
+},
+{
+"name": "BG_Building_F5",
+"N": 152.0,
+"E": 161.4,
+"D": 1.9,
+"seg_id": 53
+},
+{
+"name": "BG_Building_E_84",
+"N": -69.59,
+"E": -184.45,
+"D": 2.35,
+"seg_id": 53
+},
+{
+"name": "Apartment_Triple_Tower",
+"N": 114.47,
+"E": -202.13,
+"D": 8.51,
+"seg_id": 51
+},
+{
+"name": "Building_6_4",
+"N": -20.73,
+"E": 193.42,
+"D": 2.38,
+"seg_id": 50
+},
+{
+"name": "Apartment_Cyldr_Tower_23",
+"N": -171.42,
+"E": -61.94,
+"D": -26.52,
+"seg_id": 54
+},
+{
+"name": "Building_6_2",
+"N": -75.73,
+"E": 177.78,
+"D": 2.38,
+"seg_id": 55
+},
+{
+"name": "Building_7_3",
+"N": 61.65,
+"E": -232.88,
+"D": 2.11,
+"seg_id": 47
+},
+{
+"name": "Building_7_4",
+"N": 61.65,
+"E": -232.88,
+"D": -19.39,
+"seg_id": 52
+},
+{
+"name": "Apartment_Triple_Tower2",
+"N": 144.2,
+"E": -219.61,
+"D": 2.15,
+"seg_id": 40
+},
+{
+"name": "Building_8_20",
+"N": 39.12,
+"E": 225.15,
+"D": 1.88,
+"seg_id": 44
+},
+{
+"name": "Building_7_5",
+"N": 83.94,
+"E": -241.05,
+"D": 2.11,
+"seg_id": 42
+},
+{
+"name": "Building_7_02_53",
+"N": 61.74,
+"E": -249.26,
+"D": 2.11,
+"seg_id": 43
+},
+{
+"name": "Building_7_6",
+"N": 120.83,
+"E": -236.76,
+"D": 2.11,
+"seg_id": 46
+},
+{
+"name": "BG_Building_A6",
+"N": -194.65,
+"E": 43.95,
+"D": 3.85,
+"seg_id": 56
+},
+{
+"name": "Building_2_9",
+"N": 171.94,
+"E": 196.52,
+"D": 2.38,
+"seg_id": 54
+},
+{
+"name": "Building_2_10",
+"N": 169.81,
+"E": 199.68,
+"D": -36.59,
+"seg_id": 57
+},
+{
+"name": "Building_6_01_8",
+"N": 286.2,
+"E": 56.41,
+"D": 2.38,
+"seg_id": 45
+},
+{
+"name": "Building_9_5",
+"N": -140.08,
+"E": 177.13,
+"D": 6.76,
+"seg_id": 38
+},
+{
+"name": "Building_6_7",
+"N": 275.24,
+"E": 100.41,
+"D": 2.38,
+"seg_id": 49
+},
+{
+"name": "Building_6_02_11",
+"N": 299.85,
+"E": -1.62,
+"D": 2.38,
+"seg_id": 36
+},
+{
+"name": "BG_Building_B8",
+"N": -194.75,
+"E": 105.11,
+"D": 2.53,
+"seg_id": 35
+},
+{
+"name": "Building_6_8",
+"N": 299.67,
+"E": 28.14,
+"D": 2.38,
+"seg_id": 48
+},
+{
+"name": "Building_9_3",
+"N": -173.3,
+"E": 144.29,
+"D": 2.35,
+"seg_id": 58
+},
+{
+"name": "Building_4_01_5",
+"N": 296.09,
+"E": -86.88,
+"D": 2.42,
+"seg_id": 37
+},
+{
+"name": "Building_4_9",
+"N": 299.52,
+"E": -76.81,
+"D": 2.35,
+"seg_id": 39
+},
+{
+"name": "building_1_3",
+"N": 260.53,
+"E": -162.48,
+"D": 2.35,
+"seg_id": 34
+},
+{
+"name": "Building_6_316",
+"N": -98.54,
+"E": 220.27,
+"D": 2.38,
+"seg_id": 59
+},
+{
+"name": "Building_6_10",
+"N": -102.26,
+"E": 220.67,
+"D": 2.38,
+"seg_id": 60
+},
+{
+"name": "Building_6_11",
+"N": -194.84,
+"E": 127.57,
+"D": 2.38,
+"seg_id": 61
+},
+{
+"name": "Building_C_Mid_CornerIn_C264_Blueprint2",
+"N": -5.36,
+"E": -279.47,
+"D": -151.05,
+"seg_id": 41
+},
+{
+"name": "BG_Building_B9",
+"N": -195.1,
+"E": -156.28,
+"D": 2.04,
+"seg_id": 57
+},
+{
+"name": "Building_9_20",
+"N": -173.3,
+"E": 172.81,
+"D": 2.35,
+"seg_id": 62
+},
+{
+"name": "Apartment_On_Stilts_001_44",
+"N": 225.35,
+"E": -224.05,
+"D": 1.87,
+"seg_id": 54
+},
+{
+"name": "Building_6_5",
+"N": -194.84,
+"E": 148.5,
+"D": 2.38,
+"seg_id": 63
+},
+{
+"name": "Building_9_10",
+"N": 92.25,
+"E": -288.71,
+"D": 2.35,
+"seg_id": 33
+},
+{
+"name": "BG_Building_E5",
+"N": 45.52,
+"E": 276.48,
+"D": -19.7,
+"seg_id": 64
+},
+{
+"name": "Building_B_Bot_CornerOut_A58_Blueprint3",
+"N": -142.29,
+"E": -237.57,
+"D": -58.4,
+"seg_id": 55
+},
+{
+"name": "Building_5_01",
+"N": 108.2,
+"E": 281.29,
+"D": 2.38,
+"seg_id": 26
+},
+{
+"name": "Building_5_17",
+"N": 333.34,
+"E": 57.1,
+"D": 2.38,
+"seg_id": 32
+},
+{
+"name": "Building_8_3",
+"N": 334.38,
+"E": 56.61,
+"D": 6.63,
+"seg_id": 55
+},
+{
+"name": "Building_9_7",
+"N": -221.14,
+"E": 143.6,
+"D": 2.35,
+"seg_id": 30
+},
+{
+"name": "Building_7_01_14",
+"N": 343.34,
+"E": -2.5,
+"D": 2.38,
+"seg_id": 56
+},
+{
+"name": "Building_9_17",
+"N": -140.51,
+"E": 240.72,
+"D": 2.35,
+"seg_id": 31
+},
+{
+"name": "Building_9_21",
+"N": -184.25,
+"E": 203.08,
+"D": 2.35,
+"seg_id": 65
+},
+{
+"name": "Building_9_74",
+"N": 67.42,
+"E": 298.94,
+"D": 25.49,
+"seg_id": 16
+},
+{
+"name": "Building_2_02_28",
+"N": -63.78,
+"E": -302.88,
+"D": 2.05,
+"seg_id": 25
+},
+{
+"name": "Building_4_8",
+"N": 342.58,
+"E": -97.02,
+"D": 2.35,
+"seg_id": 58
+},
+{
+"name": "Building_2_6",
+"N": -143.63,
+"E": -268.52,
+"D": 1.97,
+"seg_id": 58
+},
+{
+"name": "Building_C_Mid_CornerIn_C264_Blueprint3",
+"N": 275.68,
+"E": 202.66,
+"D": -126.55,
+"seg_id": 12
+},
+{
+"name": "BG_Building_B13",
+"N": 7.55,
+"E": 305.96,
+"D": 61.4,
+"seg_id": 17
+},
+{
+"name": "Building_9_14",
+"N": -138.99,
+"E": 256.04,
+"D": 2.35,
+"seg_id": 66
+},
+{
+"name": "building_1_4",
+"N": -281.0,
+"E": -4.17,
+"D": 2.35,
+"seg_id": 20
+},
+{
+"name": "Building_4_7",
+"N": -257.61,
+"E": 113.25,
+"D": 2.35,
+"seg_id": 67
+},
+{
+"name": "Apartment_Square_Tower_766",
+"N": -258.43,
+"E": -133.33,
+"D": 2.25,
+"seg_id": 64
+},
+{
+"name": "Building_4_11",
+"N": 342.58,
+"E": -128.42,
+"D": 2.35,
+"seg_id": 59
+},
+{
+"name": "Building_2_64",
+"N": 118.75,
+"E": -325.53,
+"D": 2.04,
+"seg_id": 45
+},
+{
+"name": "BG_Building_B11",
+"N": 296.98,
+"E": 190.08,
+"D": 2.53,
+"seg_id": 8
+},
+{
+"name": "Building_9_4",
+"N": -253.84,
+"E": 143.6,
+"D": 2.35,
+"seg_id": 7
+},
+{
+"name": "Apartment_On_Stilts_001_769",
+"N": -284.67,
+"E": -78.89,
+"D": 2.25,
+"seg_id": 42
+},
+{
+"name": "Building_6_51",
+"N": 254.35,
+"E": 248.63,
+"D": 2.38,
+"seg_id": 3
+},
+{
+"name": "Building_2_15",
+"N": -135.57,
+"E": 278.64,
+"D": 3.3,
+"seg_id": 27
+},
+{
+"name": "Building_2_13",
+"N": 387.19,
+"E": -34.73,
+"D": 20.62,
+"seg_id": 21
+},
+{
+"name": "Apartment_wBalconies2_559",
+"N": 138.98,
+"E": -343.93,
+"D": 1.87,
+"seg_id": 32
+},
+{
+"name": "Building_2_12",
+"N": 390.67,
+"E": -11.78,
+"D": 20.45,
+"seg_id": 13
+},
+{
+"name": "Building_2_14",
+"N": 390.34,
+"E": -34.73,
+"D": -18.25,
+"seg_id": 22
+},
+{
+"name": "BG_Building_F_45",
+"N": 40.06,
+"E": -361.67,
+"D": 2.11,
+"seg_id": 36
+},
+{
+"name": "BG_Building_B14",
+"N": 391.43,
+"E": 46.73,
+"D": 23.68,
+"seg_id": 4
+},
+{
+"name": "Building_2_01_33",
+"N": -63.28,
+"E": -352.38,
+"D": 1.71,
+"seg_id": 2
+},
+{
+"name": "Building_8_01_25",
+"N": 198.29,
+"E": -335.7,
+"D": 2.35,
+"seg_id": 1
+},
+{
+"name": "building_1_5",
+"N": 0.61,
+"E": -372.27,
+"D": 2.35,
+"seg_id": 35
+},
+{
+"name": "building_1_6",
+"N": -320.78,
+"E": 44.22,
+"D": 2.35,
+"seg_id": 2
+},
+{
+"name": "Building_4_13",
+"N": 376.07,
+"E": -166.33,
+"D": 10.37,
+"seg_id": 26
+},
+{
+"name": "Building_9_2",
+"N": -299.85,
+"E": 143.26,
+"D": 2.35,
+"seg_id": 25
+},
+{
+"name": "building_1_02_36",
+"N": 5.69,
+"E": -382.35,
+"D": 1.94,
+"seg_id": 20
+},
+{
+"name": "Building_2_16",
+"N": 377.7,
+"E": -171.89,
+"D": 20.45,
+"seg_id": 27
+},
+{
+"name": "Building_2_8",
+"N": -174.45,
+"E": 299.48,
+"D": 2.35,
+"seg_id": 3
+},
+{
+"name": "Apartment_wBalconies3",
+"N": 125.64,
+"E": -380.2,
+"D": 1.87,
+"seg_id": 48
+},
+{
+"name": "Building_4_4",
+"N": -175.6,
+"E": -323.1,
+"D": 2.03,
+"seg_id": 30
+},
+{
+"name": "Apartment_On_Stilts_2",
+"N": -280.75,
+"E": -216.12,
+"D": 2.25,
+"seg_id": 31
+},
+{
+"name": "BG_Building_A9",
+"N": 350.42,
+"E": 213.98,
+"D": 23.48,
+"seg_id": 5
+},
+{
+"name": "BG_Building_A10",
+"N": 352.71,
+"E": 213.98,
+"D": -21.89,
+"seg_id": 6
+},
+{
+"name": "Building_2_17",
+"N": 385.16,
+"E": -187.71,
+"D": 20.62,
+"seg_id": 12
+},
+{
+"name": "Building_2_18",
+"N": 388.3,
+"E": -187.71,
+"D": -18.25,
+"seg_id": 3
+},
+{
+"name": "Building_4_6",
+"N": -257.61,
+"E": 245.28,
+"D": 2.35,
+"seg_id": 4
+},
+{
+"name": "Building_2_5",
+"N": 84.03,
+"E": -403.65,
+"D": -36.99,
+"seg_id": 49
+},
+{
+"name": "Building_2_61",
+"N": 84.03,
+"E": -403.65,
+"D": 2.01,
+"seg_id": 56
+},
+{
+"name": "BG_Building_A7",
+"N": 200.88,
+"E": 352.09,
+"D": 52.38,
+"seg_id": 7
+},
+{
+"name": "Building_2_11",
+"N": -96.06,
+"E": 367.28,
+"D": 28.64,
+"seg_id": 5
+},
+{
+"name": "BG_Building_E6",
+"N": 301.15,
+"E": 294.47,
+"D": 3.7,
+"seg_id": 1
+},
+{
+"name": "BG_Building_A8",
+"N": 200.88,
+"E": 364.82,
+"D": -7.83,
+"seg_id": 9
+},
+{
+"name": "building_1_7",
+"N": 446.49,
+"E": -80.61,
+"D": 19.56,
+"seg_id": 9
+},
+{
+"name": "Building_2_3",
+"N": -101.49,
+"E": -400.99,
+"D": 1.97,
+"seg_id": 34
+},
+{
+"name": "Building_9_19",
+"N": -253.94,
+"E": 287.48,
+"D": 2.35,
+"seg_id": 6
+},
+{
+"name": "Building_4_3",
+"N": 183.43,
+"E": 383.18,
+"D": 27.15,
+"seg_id": 10
+},
+{
+"name": "BG_Building_D2_42",
+"N": -61.16,
+"E": -416.7,
+"D": 2.0,
+"seg_id": 37
+},
+{
+"name": "BG_Building_A2",
+"N": -42.79,
+"E": -420.85,
+"D": 1.8,
+"seg_id": 39
+},
+{
+"name": "Apartment_LShape5",
+"N": -251.9,
+"E": -311.23,
+"D": 2.25,
+"seg_id": 1
+},
+{
+"name": "Apartment_LShape5",
+"N": -251.9,
+"E": -311.23,
+"D": 2.25,
+"seg_id": 7
+},
+{
+"name": "Building_9_6",
+"N": 201.62,
+"E": -405.22,
+"D": 2.35,
+"seg_id": 57
+},
+{
+"name": "BG_Building_A11",
+"N": 321.92,
+"E": 311.28,
+"D": 23.48,
+"seg_id": 11
+},
+{
+"name": "BG_Building_A12",
+"N": 321.92,
+"E": 311.28,
+"D": -84.63,
+"seg_id": 14
+},
+{
+"name": "BG_Building_B12",
+"N": -205.07,
+"E": 341.9,
+"D": 21.62,
+"seg_id": 8
+},
+{
+"name": "Building_4_10",
+"N": 75.6,
+"E": 432.78,
+"D": 50.5,
+"seg_id": 2
+},
+{
+"name": "Building_9_18",
+"N": -326.55,
+"E": 251.65,
+"D": 2.35,
+"seg_id": 9
+},
+{
+"name": "Apartment_wBalconies2_775",
+"N": -364.71,
+"E": 188.05,
+"D": 2.25,
+"seg_id": 10
+},
+{
+"name": "building_1_8",
+"N": 428.18,
+"E": -243.01,
+"D": 19.56,
+"seg_id": 2
+},
+{
+"name": "Building_9_8",
+"N": 201.58,
+"E": -441.25,
+"D": 2.35,
+"seg_id": 4
+},
+{
+"name": "Apartment_LShape4_10",
+"N": -309.93,
+"E": -311.23,
+"D": 2.25,
+"seg_id": 33
+},
+{
+"name": "Building_5_5",
+"N": 474.29,
+"E": -177.75,
+"D": 0.47,
+"seg_id": 5
+},
+{
+"name": "Building_9_15",
+"N": -319.89,
+"E": 288.09,
+"D": 2.35,
+"seg_id": 1
+},
+{
+"name": "Apartment_LShape3_9",
+"N": -329.5,
+"E": -300.44,
+"D": 2.25,
+"seg_id": 38
+},
+{
+"name": "BG_Building_F6",
+"N": 214.47,
+"E": 433.29,
+"D": 45.33,
+"seg_id": 4
+},
+{
+"name": "Apartment_wBalconies_773",
+"N": -407.5,
+"E": 161.58,
+"D": 2.25,
+"seg_id": 11
+},
+{
+"name": "BG_Building_B_28",
+"N": -197.57,
+"E": -437.18,
+"D": 2.28,
+"seg_id": 3
+},
+{
+"name": "Building_9_26",
+"N": -380.51,
+"E": 251.8,
+"D": 2.35,
+"seg_id": 12
+},
+{
+"name": "Apartment_LShape_4",
+"N": -387.17,
+"E": -290.37,
+"D": 2.25,
+"seg_id": 4
+},
+{
+"name": "Building_9_16",
+"N": -380.51,
+"E": 287.95,
+"D": 2.35,
+"seg_id": 13
+},
+{
+"name": "BG_Building_A3_8",
+"N": -283.67,
+"E": -427.46,
+"D": 4.51,
+"seg_id": 5
+},
+{
+"name": "Apartment_LShape2_6",
+"N": -407.08,
+"E": -301.26,
+"D": 2.25,
+"seg_id": 6
+}
+]
