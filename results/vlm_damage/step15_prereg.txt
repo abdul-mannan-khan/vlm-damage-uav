@@ -1,0 +1,62 @@
+STEP 15 - VALUE-OF-INFORMATION SWEEP, GATE, 4-ARM PILOT, FLIGHT PLAN        written 12 Nov 2026, BEFORE any step-15 run
+(continues results/vlm_damage/step14_closedloop_prereg.txt; step 14's gate failed, sec. 11 there)
+User approval (relayed 12 Nov): steps 1-3 (sweep, gate + pilot, flights; the rental is asked for separately).
+
+1. Scenario 'urgency' (code: sim/airsim_vlm/closed_loop/damage_loop.py, SCENARIOS['urgency'], urgency_setup())
+Step-6 city area: 600 x 600 m CityEnviron square, 87 merged footprints, disaster users (5 hotspots), 200 users/km^2 and
+0.1/s/km^2 arrivals, T = 300 s, MAQAC-S (maqac_seq), onboard user perception, calibrated step-6 camera model for 'seen'.
+Damage: step-3 label model, layout 'indep' (3 epicentres), seed = mission seed.
+Damage enters URGENCY. g_u = max(1, max over footprints within R_B = 25 m of the user's home of g(y_b)), g = (1, 1.5, 2.5, 3).
+gbar = mean of g_u over all users of the world (initial + arrivals). Each user's class is redrawn (stream rng([seed, 1417]),
+one uniform per user) with
+   P(emergency | u) = min(0.95, 0.35 g_u / gbar),
+   P(realtime  | u) = (1 - P(emergency | u)) x 0.35 / 0.65,   P(best effort | u) = (1 - P(emergency | u)) x 0.30 / 0.65,
+so the expected class mix is the default disaster mix (0.35, 0.35, 0.30) unless the 0.95 cap binds (realised shares
+reported). The class sets w_cls (3, 2, 1), the decay mu, the minimum rate and the mean session length of the user
+(its session-length draw is rescaled to the new class mean); nothing else changes.
+J_true = sum_u w_cls(u) g_u frac_u (damage_loop.true_score, R_B = 25 m). The planner never sees g or the class until
+attach (cls_visible False, as in all v3 runs); arm D gives it g(y_b) of seen buildings, arm A gives 1.
+
+2. Grid: n in {2, 4, 6, 8} UAVs x service radius r_s in {50, 100, 150} m (12 cells; step 6 = n 2, r_s 150).
+Seeds 23000-23039 (40 per cell; disjoint from flight seeds 21000-21007, pilot seed 21900, twin pilot 21100-21199 and
+the step-14 gate 22000-22049). Arms A and D ONLY; B and C are NOT run in the sweep.
+Per cell: d_s = 100 (J_true(D) - J_true(A)) / J_true(D); mean, sd, dz = mean / sd, one-sided Wilcoxon p; A's share of
+max J_true; arm-A sanity (= plain maqac_seq with the same urgency set-up). Figure: scripts/vlm_tvt_figs.py fig_voi()
+-> paper/vlm_tvt/figures/fig_voi.pdf (heatmap of mean d, annotated with dz).
+
+3. Gate (fixed now): a cell is eligible iff mean d >= 1.5 points AND dz >= 0.8. Choose the eligible cell closest to the
+step-6 setting: smallest n first, then largest r_s. If none is eligible: STOP, no flight, a 'not flown' note is added here.
+
+4. Pilot (only if a cell is chosen): the chosen cell, all 4 arms, flight seeds 21000-21007 (the seeds to be flown),
+plus the secondary counterfactual endpoint (step 14 sec. 10/10a) in the C runs. Reported as a twin pilot; power from
+dz of C - B. The pilot does not change the hypotheses or bars below; they are fixed in sec. 5 now.
+
+5. Flight hypotheses (fixed now, adapted from step 14 sec. 4; chosen cell, urgency scenario, 4 arms x 8 seeds 21000-21007,
+T = 300 s, PX4 SITL in CityEnviron as step 6, Latin-square arm order, + 1 pilot mission seed 21900 arm C not analysed):
+ H1 (main)  C loses less than B: J_true(C) - J_true(B) > 0, one-sided exact Wilcoxon p < 0.05 AND >= 6/8 seeds positive.
+            The claim "conformal-set weights lose less than the top label in closed-loop flight" is made ONLY if H1 passes.
+ H2         C beats A (p < 0.05).   H2' (manipulation check) D beats A (p < 0.05); if H2' fails, H1/H2 are reported as
+            uninformative (the flights did not reproduce the value of damage information).
+ H3         coverage of in-flight sets on seen buildings >= 0.90 pooled (CP lower bound reported).
+ H4 safety  0 in-flight collisions (CP upper bound).
+ Secondary  counterfactual per-round loss of B vs C (step 14 sec. 10a), paired Wilcoxon over seeds, no bar.
+ Reported   flown vs kinematic and replay twins; seen buildings; weight error; min separation.
+If H1 fails the paper keeps the C-vs-B claim to the one-round bench (fig:perc) and reports the flight result as measured.
+
+6. SWEEP RESULT AND GATE (12 Nov 2026, ~20:20 UTC; results/vlm_damage/step15/voi_sweep.jsonl, voi_sweep_summary.json,
+figure paper/vlm_tvt/figures/fig_voi.pdf). Arms A and D only, 40 seeds per cell (23000-23039), 960 episodes, laptop via
+resman (~9 min). Arm-A sanity passed in all 12 cells. Realised emergency share 0.343 (cap bound for 96 of ~80,000 user draws).
+D - A in points of J_true(D) (sd, dz, one-sided Wilcoxon p); A's share of max J_true:
+   n  r_s=50                     r_s=100                    r_s=150
+   2  +0.08 (1.00, 0.08, 0.16)   +0.07 (0.84, 0.09, 0.17)   +0.17 (0.64, 0.27, 0.10)   headroom 0.955-0.957
+   4  -0.07 (0.79, -0.08, 0.86)  +0.02 (0.39, 0.06, 0.22)   -0.04 (0.26, -0.17, 0.75)  0.983-0.985
+   6  -0.08 (0.42, -0.18, 0.74)  -0.05 (0.22, -0.24, 0.87)  +0.03 (0.26, 0.12, 0.19)   0.985-0.987
+   8  -0.15 (0.80, -0.19, 0.85)  -0.05 (0.61, -0.08, 0.39)  +0.02 (0.45, 0.04, 0.24)   0.955-0.962
+Gate: no cell eligible (bar mean >= 1.5 and dz >= 0.8; largest mean +0.17, largest dz 0.27).
+NOT FLOWN. By sec. 3 the step-15 flights are not run, the 4-arm pilot is not run, and no box is rented. B and C were
+never run on these seeds. Reading: across fleet sizes 2-8 and planner service radii 50-150 m, with damage driving
+urgency, knowing the true damage of seen buildings did not raise the damage-weighted session score (|gain| <= 0.17 % of
+the score). The planner already serves 95-99 % of the attainable value; in the v3 radio model access is decided by SINR
+and admission (admit_disc False), so r_s changes only the planner's footprint value, not who can be served, and building
+weights mostly reorder users that are served anyway. The paper's C-vs-B claim therefore rests on the one-round bench
+(fig:perc); fig_voi can be reported as the closed-loop value-of-information null result.

@@ -1,0 +1,34 @@
+{
+ "demand|indep|maqac_seq": {
+  "arms": [
+   "A_blind",
+   "D_oracle"
+  ],
+  "seeds": 50,
+  "J_true_mean": {
+   "A_blind": 249.3280842805516,
+   "D_oracle": 249.37944197545718
+  },
+  "sanity_A_equals_plain": true,
+  "headroom_A": 0.9351623969653201,
+  "users_mean": 96.08,
+  "users_g_gt1_mean": 29.8,
+  "seen_mean": {
+   "A_blind": 71.54,
+   "D_oracle": 70.96
+  },
+  "abs_err_seen": {
+   "A_blind": 0.44296075524443473,
+   "D_oracle": 0.0
+  },
+  "D_oracle-A_blind": {
+   "mean_pts": 0.008406201943008092,
+   "sd": 1.029716105691065,
+   "dz": 0.008163611209486235,
+   "positive": 26,
+   "negative": 24,
+   "wilcoxon_greater_p": 0.4353969529721571
+  },
+  "GATE_PASS": false
+ }
+}

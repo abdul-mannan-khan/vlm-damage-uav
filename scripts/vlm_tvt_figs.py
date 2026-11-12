@@ -8,6 +8,7 @@
 Palette: categorical slots 1-3 of the dataviz reference palette (validated, light mode); markers differ per series.
 """
 import json
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -297,7 +298,41 @@ def fig_bestfirst():
     fig.tight_layout(w_pad=0.5, rect=(0, 0.17, 1, 1)); fig.savefig(OUT / 'fig_bestfirst.pdf'); plt.close(fig)
 
 
+def fig_voi(path=None):
+    """Step 15 value-of-information sweep (prereg results/vlm_damage/step15_prereg.txt): mean gain of the oracle arm over
+    the damage-blind arm, points of J_true(D), per fleet size x service radius; cell text = mean and dz; outlined = gate-
+    eligible (mean >= 1.5 and dz >= 0.8)."""
+    from matplotlib.colors import TwoSlopeNorm
+    from matplotlib.patches import Rectangle
+    S = json.load(open(path or R / 'step15' / 'voi_sweep_summary.json'))
+    ns, rs = [2, 4, 6, 8], [50, 100, 150]
+    M = np.full((len(rs), len(ns)), np.nan); Z = M.copy()
+    for k, c in S.items():
+        n = int(k.split('|')[3][1:]); r = float(k.split('|')[4][2:])
+        g = c['D_oracle-A_blind']
+        M[rs.index(int(r)), ns.index(n)], Z[rs.index(int(r)), ns.index(n)] = g['mean_pts'], g['dz']
+    lim = max(1.6, float(np.nanmax(np.abs(M))))
+    fig, ax = plt.subplots(figsize=(W1, 2.2))
+    im = ax.imshow(M, cmap='RdBu', norm=TwoSlopeNorm(0.0, -lim, lim), origin='lower', aspect='auto')
+    ax.grid(False)
+    for i in range(len(rs)):
+        for j in range(len(ns)):
+            ax.text(j, i, f'{M[i, j]:+.2f}\n$d_z$ {Z[i, j]:.2f}', ha='center', va='center', fontsize=7,
+                    color='white' if abs(M[i, j]) > 0.6 * lim else INK)
+            if M[i, j] >= 1.5 and Z[i, j] >= 0.8:
+                ax.add_patch(Rectangle((j - 0.5, i - 0.5), 1, 1, fill=False, ec=INK, lw=1.5))
+    ax.set_xticks(range(len(ns)), [str(n) for n in ns]); ax.set_yticks(range(len(rs)), [f'{r} m' for r in rs])
+    ax.set_xlabel('UAVs $n$'); ax.set_ylabel('service radius $r_s$')
+    cb = fig.colorbar(im, ax=ax, pad=0.02, fraction=0.06)
+    cb.set_label('oracle $-$ blind (pts of $J_{\\rm true}$)', fontsize=7); cb.ax.tick_params(labelsize=7)
+    cb.outline.set_edgecolor(MUTED)
+    fig.tight_layout(); fig.savefig(OUT / 'fig_voi.pdf'); fig.savefig(OUT / 'fig_voi.png', dpi=200); plt.close(fig)
+    return M, Z
+
+
 if __name__ == '__main__':
+    if sys.argv[1:] == ['voi']:
+        print(fig_voi()); raise SystemExit
     fig_links(); fig_perception()
     print('ECE in reliability figure', round(fig_reliability(), 4))
     print('visibility means', fig_visibility())

@@ -1,0 +1,133 @@
+STEP 14 - CLOSED-LOOP DAMAGE WEIGHTING IN FLIGHT (AirSim CityEnviron + PX4 SITL)          DRAFT, 12 Nov 2026
+Status: DRAFT for the user. NOT pre-registered, NOT flown, no box rented. The twin pilot below (sec. 7) shows that
+the design AS WRITTEN cannot answer the question; sec. 8 is the gate that must pass before anything is rented.
+
+1. Question
+In flight, with the VLM's beliefs feeding the planner, does planning on conformal-set weights (Lemma lem:tight midpoint)
+lose less of the TRUE damage-weighted objective than planning on the top label (paper fig:perc / step 7: "halves the loss")?
+
+2. Missions
+2 UAVs, MAQAC-S (maqac_seq, plain; the step-6 planner), scenario 'disaster', 600 x 600 m CityEnviron square (origin N 40
+E -10), 87 merged building footprints, T = 300 s, 100 m (+3 m per UAV), clock 0.7, keep-out -80 36 -339 -235 240, collisions
+polled every round, down camera 60 deg, 640 x 480, frames every 5 s per UAV, no pedestrians (as step 6).
+Arms on the same seeds: A blind (w_hat = 1), B top label g(argmax), C conformal-set midpoint, D oracle g(y).
+Seeds 21000-21007 (new; never flown). 4 arms x 8 seeds = 32 missions + 1 pilot mission (seed 21900, arm C, not analysed).
+Arm order rotated per seed (Latin square); all four arms of a seed are flown before the next seed.
+Plan: sim/airsim_vlm/closed_loop/plan_step14.txt (+ plan_step14_pilot.txt).
+
+3. How damage enters (code: sim/airsim_vlm/closed_loop/damage_loop.py)
+- True grade y_b per footprint: step-3 label model, layout 'indep', seed = mission seed (labels(), copied verbatim).
+- TRUE score (true_score(), user_g()): J_true = sum_u w_cls(u) g_u frac_u, g_u = max(1, max over buildings within
+  R_B = 25 m of the user's home of g(y_b)), g = (1, 1.5, 2.5, 3); w_cls and frac_u exactly as World.results() J_session.
+- Seen: first frame with >= 6,144 px (2 %) of the footprint (segmentation, pieces summed), as step 5/6.
+- Verdict: one RescueNet test image of the true grade per (seed, building), fixed before any mission (balanced over the
+  seed list, img_seed 1414), replayed through the saved V3-calibrated ensemble posterior and alpha = 0.1 conformal set
+  (step3_obs_bundle.npz, q_hat 0.8866). Stored outputs = running the model on that image; the VLM does not run live, so
+  the box needs no GPU memory for it and no model, images or npz other than the AirSim height map are shipped (only a
+  JSON verdict table).
+- Planner (DamageAgent / DamageState): from the round after a building is first seen, every UAV multiplies the value of
+  believed users (tracks, hold term) and the prior density of cells within R_B of seen buildings by max(1, max w_hat_b).
+  Arm A reproduces plain MAQAC-S exactly (checked on all pilot seeds).
+
+4. Hypotheses and bars (one-sided paired Wilcoxon, exact, 8 seeds; loss_X = (J_D - J_X)/J_D on J_true)
+H1 (main)  C loses less than B: J_true(C) - J_true(B) > 0, p < 0.05, AND >= 6/8 seeds positive.
+H2         C beats A: J_true(C) - J_true(A) > 0, p < 0.05.
+H3         Coverage of the in-flight sets on seen buildings (pooled over the C missions) >= 0.90, CP lower bound
+           reported (effective sample smaller than the count: class-1 test images are reused ~4x per 8 seeds).
+H4 safety  0 in-flight collisions over 33 missions (CP upper bound reported).
+Reported, no bar: loss of each arm vs D; flown vs kinematic twin and vs replay twin (same seen events on the kinematic
+model) J_true, to separate flight effects from weighting effects; seen buildings at 1/2/3/5 min; weight error on seen
+buildings; minimum separation.
+Note on power: with 8 seeds a one-sided exact Wilcoxon reaches 80 % power only for a paired effect of dz ~ 1.0.
+
+5. If they fail
+H1 fails: the paper states that in closed-loop flight the set-midpoint rule was not shown to beat the top label; the
+bench claim (fig:perc) stays a one-round claim. H2 fails: no in-flight benefit of damage weighting shown. H3 fails:
+coverage reported as measured with the exchangeability caveat. No claim is made from any failed or untested hypothesis.
+
+6. Cost (from the step-5/6 logs)
+Step 6: 24 missions on Vast 59927306 (RTX 3090, driver 595.91, $0.281/h): 8 min 48 s per mission including reset
+(driver.log), 3.9 h in total, $1.09. Step 5: RTX 3090 Ti, $0.228/h. Step 14: 33 missions x 8.8 min = 4.8 h + setup
+0.2 h (no VLM install) + pulls 0.3 h ~ 5.3 h; at $0.23-0.30/h ~ $1.2-1.6. Cap $2.50, hard stop 8 h, md5 copy-back,
+destroy. Box: one GPU with NVIDIA driver >= 595 and >= 8 GB (AirSim ~3 GB; no VLM); a 3090-class card is the proven
+choice (an RTX 3080 offer failed to start AirSim on 10 Nov). Runner: sim/airsim_vlm/closed_loop/vast_step14.sh.
+
+7. PILOT on the kinematic twin (NOT flight data; results/vlm_damage/step14/pilot_kin_*.jsonl, *_summary.json)
+Same arms, calibrated step-6 camera model for 'seen' (common random numbers per seed). Units: points of J_true(D).
+Flight seeds 21000-21007, indep: C-B -0.15 (3/8 +, p 0.81); C-A +0.14 (p 0.37); D-A +0.37 (p 0.16).
+Power seeds 21100-21199 (100), indep: C-B -0.02 (sd 0.67, 49/100 +, p 0.57, dz -0.02); C-A +0.07 (p 0.12);
+  D-A -0.11 (p 0.88): even perfect damage knowledge does not raise the true score.
+Same, colo layout (damage at the user hotspots): C-B +0.06 (sd 0.82, p 0.35); C-A +0.21 (p 0.018); D-A +0.13 (p 0.04).
+Headroom: blind MAQAC-S already earns 0.94 of the maximum J_true (service radius 150 m, 2 UAVs, ~83 users).
+Weight error on seen buildings (mean |w_hat - g(y)|): A 0.47, B 0.28, C 0.35 (the city is 53 % intact; the midpoint of
+the frequent set {1, 2} adds 0.25 to intact buildings). Coverage of seen sets 0.92, mean set size 1.94.
+Reading: every arm difference is < 0.5 % of the score and buried in trajectory noise (sd ~0.7-0.8 points). The flight
+test as specified would be uninformative whatever the planner does: H1 would fail for lack of signal, not because the
+method is wrong.
+
+8. Gate before renting (proposed; it does not look at C vs B, so choosing a setting with it does not bias H1)
+Choose the setting on the twin, with seeds disjoint from the flight seeds, using only the value of damage information:
+D - A >= 1.5 points of J_true(D) with dz >= 0.8 over 50 twin seeds. Candidates (each changes the scenario and is
+declared as such): (a) demand follows damage (user density near a building scaled by g(y_b), people needing links near
+damaged buildings); (b) more users per UAV so capacity binds (e.g. 3x the 1 km density); (c) R_B equal to the
+service footprint scale, so weights move targets rather than reorder users inside one footprint. Only a setting that
+passes the gate is flown; if none passes, the in-flight test is not run and the paper says why.
+Secondary endpoint proposed to remove trajectory noise (to be coded before any flight): in each flown C mission, at every
+decision round, plan with B, C and D weights on the SAME agent state and score each plan with the true weights (paired
+per round, the closed-loop analogue of the step-7 bench).
+
+=====================================================================================================================
+9. GATE SEARCH (12 Nov 2026, written BEFORE any gate run; user: "Find a fair scenario first")
+Candidates (each one change from the step-6 scenario of sec. 2-3; everything else unchanged; layout 'indep'):
+  S1 rb50    R_B = 50 m (instead of 25 m) in BOTH the true score g_u and the planner's weighting radius. World unchanged.
+  S2 demand  damage-scaled demand: the world is generated with 3x the step-6 users and arrivals (216 initial users,
+             arrival 0.108/s), and each user is kept with probability g_u / 3 (g_u from its home position and the TRUE
+             grades, R_B = 25 m; fixed stream rng([seed, 1416])). Dropped users never appear (arrival time set to T + 1).
+             So user density near a building is proportional to g(y_b) (3x the step-6 density at 'total', 1x where
+             g_u = 1). The planner's prior density stays at the step-6 value (72 users + 0.036/s over the area): it does
+             not know that demand follows damage; only the arms' building weights can tell it.
+  S3 dense3  3x user density: 216 initial users, arrival 0.108/s, R_B = 25 m; the planner's prior is 3x as well (it
+             knows the density, as in every netsim run).
+Size of change, fixed now for the tie-break: S1 < S2 < S3.
+Gate seeds: 22000-22049 (50 seeds; disjoint from the flight seeds 21000-21007, the pilot seed 21900 and the twin pilot
+seeds 21100-21199). Verdict table for these seeds built as in sec. 3 (img_seed 1414, this seed list).
+Arms run on the gate seeds: A (blind) and D (oracle) ONLY. Arms B and C are NOT run on the gate seeds.
+Gate rule (per candidate, from A and D only): d_s = 100 (J_true(D) - J_true(A)) / J_true(D) per seed;
+  PASS iff mean(d) >= 1.5 points AND dz = mean(d) / sd(d) >= 0.8. One-sided Wilcoxon p reported, not part of the rule.
+Choice: among passing candidates, the smallest change (S1 < S2 < S3); if equal, the largest dz. If none passes, the
+in-flight test is not flown (sec. 11 then says so).
+After the choice (and only then): the 4-arm twin pilot on the flight seeds 21000-21007 for the chosen scenario, reported
+as a pilot, and the flight plan, runner and cost are updated to that scenario.
+
+10. SECONDARY ENDPOINT (fixed 12 Nov 2026, before any flight): per-round counterfactual planning
+In every C mission (flown and twin), at every decision round after the first building is seen, the fleet's plan is
+recomputed with the B, C and D weights on the SAME agent state (same beliefs, positions, decision order; the C plan is
+the one flown), and each plan's one-round value is scored with the true weights on the true unserved users:
+  f_true(S) = sum_u w_cls(u) g_u S(tau_e - a_u) over unserved present users covered by the plan's cells (World.true_maps
+  footprint rule, r_s), counting each user once at its best covering event.
+Per mission: mean over rounds of 100 (f_true(S_D) - f_true(S_X)) / f_true(S_D) for X = B, C (rounds with f_true(S_D) = 0
+skipped) and the share of rounds where the plans differ. Test (reported next to H1, no separate pass bar): paired
+one-sided Wilcoxon over the 8 seeds that the C loss is smaller than the B loss. Counterfactual plans are never flown.
+10a. Amendment (12 Nov 2026, after a 1-seed code smoke test of sec. 10, BEFORE any gate or pilot statistic and before
+any flight): as written, f_true counts only users still awaiting first contact; with the 150 m service footprint
+almost all users are contacted early, so f_true(S_D) > 0 in 1 of 299 rounds (smoke seed 21000, base scenario) and the
+endpoint is degenerate. Amended: f_true(S) also counts users in session (served, kept, before their session end) that a
+plan cell covers, at w_cls g_u for one round of service (the per-round analogue of J_session). No B-vs-C value was
+looked at for this change. Code check in the same smoke test: the counterfactual C plan equalled the flown C plan in
+every round and the flown score was unchanged (J_true identical to the run without the endpoint).
+Sanity check for S2: plain maqac_seq cannot hold the 1x prior, so arm A is compared with the damage agent run without
+any building state (same prior) instead.
+
+11. GATE RESULT (12 Nov 2026; kinematic twin, seeds 22000-22049, arms A and D only; results/vlm_damage/step14/gate_*.jsonl,
+gate_*_summary.json). Units: points of J_true(D); bar mean >= 1.5 AND dz >= 0.8.
+  S1 rb50    D-A +0.25 (sd 0.97, dz 0.26, Wilcoxon p 0.062, 31/50 positive)  FAIL   (A earns 0.95 of max J_true)
+  S2 demand  D-A +0.01 (sd 1.03, dz 0.01, p 0.44, 26/50)                       FAIL   (0.94)
+  S3 dense3  D-A +0.21 (sd 2.08, dz 0.10, p 0.16, 32/50)                       FAIL   (0.74: headroom exists, still no gain)
+Arm-A sanity check passed in all three. Arms B and C were not run on the gate seeds.
+NOT FLOWN. No candidate passes, so by sec. 9 the in-flight closed-loop test of H1/H2 is not run and no box is rented.
+Paper wording: in the closed-loop network simulator of the flights (2 UAVs, 150 m service footprint, 600 m city square),
+even perfect knowledge of every seen building's damage did not raise the damage-weighted service score detectably (gain
+<= 0.25 % of the score, 50 seeds, three scenario variants fixed in advance), so the flights cannot test whether
+conformal-set weights beat the top label; that claim rests on the one-round exact-optimum bench (fig:perc). The weights
+change targets, but the change is smaller than the run-to-run noise of the closed loop. The secondary endpoint (sec. 10)
+is implemented and tested for code correctness only; it was not run on any pilot or flight.

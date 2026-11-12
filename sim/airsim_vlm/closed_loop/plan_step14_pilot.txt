@@ -1,0 +1,2 @@
+# Step 14 pilot (not part of the 32): one mission, seed 21900 (not a test seed), arm C, checks frames/seen/weights.
+s14pilot_C_set_21900 2 --arm C_set --seed 21900 --scenario disaster --T 300 --L 600 --origin-ne 40 -10 --heightmap /work/vlm/survey/heightmap.npz --layer 3 --no-users --keepout -80 36 -339 -235 240 --frames-every 5 --buildings /work/vlm/buildings.json --verdicts /work/vlm/verdicts_step14.json --vis /work/vlm/visibility_model_step5.json
