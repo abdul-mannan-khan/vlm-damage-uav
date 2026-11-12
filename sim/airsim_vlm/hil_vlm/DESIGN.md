@@ -4,7 +4,7 @@
 UAV 0 (of 2) flies in PX4 HITL on the Pixhawk 6C. AirSim CityEnviron on the laptop supplies the physics, the sensors and
 UAV 0's downward camera. The Jetson Orin Nano runs the network model, both UAVs' decisions (1 s rounds) and the int8 VLM
 on UAV 0's frames (one every 5 s).
-This is VehCom set-up 2 (30 HIL missions, 4–5 Nov) with the VLM added. It is a systems check and does not test a
+This is the AirSim city hardware-in-the-loop set-up with the VLM added. It is a systems check and does not test a
 performance claim.
 
 ## What step 6 actually did, and why there are two arms
@@ -42,7 +42,7 @@ afterwards. So "feed it to the planner as step 6 did" means "do not feed it". Th
 | process | memory | CPU |
 |---|---|---|
 | VLM worker (int8, 1 seed) | 4.6–4.75 GB CUDA + ~0.4 GB host (step 8: system peak 7.0 GB together with 5 netsim workers) | 1 core preprocessing, GPU 1.8 s/frame |
-| runner (netsim + decisions + twins) | ~0.3–0.7 GB (dry run VmHWM 0.73 GB on x86) | 1 core; MAQAC-S 17–33 ms per round (VehCom) |
+| runner (netsim + decisions + twins) | ~0.3–0.7 GB (dry run VmHWM 0.73 GB on x86) | 1 core; MAQAC-S 17–33 ms per round (the earlier MAQAC work) |
 | HIL server (setpoints 50 Hz) + p27_router (MAVLink AirSim↔Pixhawk, ~333 HIL_SENSOR/s) | ~0.15 GB | ~1 core |
 
 Expected peak ≈ 6.0–6.6 GB. The campaign refuses to start below 6.2 GB MemAvailable, which also catches another
@@ -51,12 +51,12 @@ session's LLM server left resident. Memory, overruns and latency are logged ever
 ## What goes to the Jetson (`make_jetson_bundle.sh OUT`, 0.8 MB)
 - This folder's code and the VLM snapshot's netsim (with third_party).
 - `heightmap.npz` = `sim/airsim_vlm/survey/heightmap.npz` (AirSim CityEnviron height survey, md5 2d4eed4f). This is the
-  same file VehCom's set-up 2 used. It is allowed.
+  same file the earlier MAQAC set-up 2 used. It is allowed.
 - `buildings.json` (step-6 inventory) and `int8_v2_calibration.npz`. The calibration was re-fitted from the Jetson
   val logits and reproduces step 8 P3 V2 exactly: F1 0.663, ECE 0.060, coverage 0.902, 1.59 labels, q̂ 0.848.
 - **No** `data/cities/*.npz`, `london_lidar.npz` or `manhattan_nyc.npz` (the script refuses them), and no keys.
 - Already on the Jetson: `~/vlm_damage_p3/model` (int8, check against model.md5) and `~/vlm_damage_p3/venv` (torch; used
-  by the worker through `--vlm-python`). The runner uses the system python3 with pymavlink, as in VehCom.
+  by the worker through `--vlm-python`). The runner uses the system python3 with pymavlink, as in the earlier MAQAC work.
 
 ## Commands (all after a robotq booking, both locks; **DECIDE D1**)
 ```
@@ -71,7 +71,7 @@ echo GO > ~/vlm_hil/CONTROL           # DECIDE D4, after the shakedown check bel
 python3 summarize_vlm_hil.py results/hil_vlm --json results/hil_vlm/summary.json
 # dry run anywhere (no hardware): python3 run_vlm_hil.py --dry-run --T 30 --seeds 20002 --vlm-planner off prior --out /tmp/d
 ```
-**Protocol** (as VehCom): owner files busy → full backup (else by name) → SYS_HITL 1, COM_RC_IN_MODE 4, speed limits,
+**Protocol** (as the earlier MAQAC work): owner files busy → full backup (else by name) → SYS_HITL 1, COM_RC_IN_MODE 4, speed limits,
 geofence off (**D5**, allowed by the 11 Nov standard practice) → reboot → HIL_ACT_FUNC 101–104 → shakedown → GO → 12
 missions in one call (never reboot with the AirSim vehicle in the air) → HIL_ACT_FUNC 0 → restore backup → write
 GF 100/60/3 and SYS_HITL 0 → reboot → read back by name until 0 differences (GF expected 100/60/3) → hand-over checks
@@ -106,10 +106,10 @@ GF 100/60/3 and SYS_HITL 0 → reboot → read back by name until 0 differences 
 | bar | criterion |
 |---|---|
 | P1 | no failsafe, mode drop, disarm in the air or abort in any mission (report k/n with a Clopper–Pearson upper bound) |
-| P2 | 0 decision-round overruns (round not finished inside its 1 s) and router/HIL loop stats like VehCom |
+| P2 | 0 decision-round overruns (round not finished inside its 1 s) and router/HIL loop stats like the earlier MAQAC work |
 | P3 | in-loop VLM compute p90 ≤ 5 s (the frame period); capture + VLM p90 ≤ 5 s |
 | P4 | ≥ 95 % of frame requests answered, 0 worker errors, belief age at first use ≤ 10 s for every answered frame |
-| P5 | MAQAC-S fleet decision p95 ≤ 100 ms per round with the VLM running (descriptive: change vs VehCom's ≤ 41 ms) |
+| P5 | MAQAC-S fleet decision p95 ≤ 100 ms per round with the VLM running (descriptive: change vs the earlier MAQAC ≤ 41 ms) |
 | P6 | system memory in use ≤ 7.3 GB at every round; no OOM kill, no swap growth > 256 MB |
 | P7 | `off` arm: J within ±5 % of the step-6 SITL mission with the same seed, and of the kinematic twin |
 | P8 | `prior` arm: J within ±5 % of its replay twin (same weights at the same rounds, no HIL), so the HIL flight does not change the outcome; ΔJ(replay vs kinematic) reported as the VLM's effect, with no claim |

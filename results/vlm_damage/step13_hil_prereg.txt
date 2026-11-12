@@ -8,7 +8,7 @@ on the Jetson: F1 0.663, ECE 0.060, coverage 0.902) on UAV 0's downward frame ev
 Arms: off (VLM live and logged, planner unchanged, as in the SITL flights) and prior (each frame's conformal-set midpoint
 weight scales the planner's prior user value within 25 m of the seen buildings, from the next round; shared with both
 UAVs' planners, --vlm-share all). Seeds 20000-20005, both arms per seed, 12 missions of 300 s, plus a 60 s shakedown
-(seed 19999, not analysed). Method: MAQAC-S, relayed list, chain rule. PX4 parameters as VehCom's HIL campaign; full
+(seed 19999, not analysed). Method: MAQAC-S, relayed list, chain rule. PX4 parameters as the earlier MAQAC HIL campaign; full
 same-day backup, restored and read back to 0 differences, GF 100/60/3 and SYS_HITL 0 at the end.
 
 Pass bars (from PLAN.md, fixed now; all reported):

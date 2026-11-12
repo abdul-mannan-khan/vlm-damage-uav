@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build the LOCAL folder that is copied to the Jetson as ~/vlm_hil (copying is a separate, booked step: DESIGN.md).
 # Contents: this folder's code + the VLM snapshot's netsim (with third_party) + survey/heightmap.npz (AirSim CityEnviron
-# height survey, md5 2d4eed4f..., the same file VehCom's set-up 2 used; allowed) + buildings.json + the int8 calibration.
+# height survey, md5 2d4eed4f..., the same file the earlier MAQAC set-up 2 used; allowed) + buildings.json + the int8 calibration.
 # NOT included (restricted, never copied): data/cities/*.npz, london_lidar.npz, manhattan_nyc.npz; no keys or tokens.
 # The int8 VLM itself is already on the Jetson (~/vlm_damage_p3/model, step 8; checked by md5 there, model.md5).
 #   bash make_jetson_bundle.sh OUT_DIR

@@ -1,5 +1,5 @@
 """Replay video of one logged step-6 mission (PX4 SITL in AirSim CityEnviron, onboard VLM damage reading), 10 Nov 2026.
-Adapted from a copy of maqac-vehcom/sim/hil/replay_hil_airsim.py (that file is not changed).
+Adapted from a copy of an earlier MAQAC codebase replay_hil_airsim.py (that file is not changed).
 
 Logged data used (results/vlm_damage/city_step6/runs/<run>/):
   tracks.json        PX4 position estimate of each UAV every 1 s (world N, E, D)

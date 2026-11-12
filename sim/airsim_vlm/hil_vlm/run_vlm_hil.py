@@ -2,7 +2,7 @@
 """Closed-loop HIL with the onboard damage VLM (VLM paper, IEEE TVT; prepared 12 Nov 2026, not yet flown).
 
 UAV 0 of a 2-UAV fleet is flown by PX4 on the Pixhawk 6C in HITL with AirSim CityEnviron on the laptop supplying physics,
-sensors and UAV 0's downward camera (VehCom set-up 2: W2's p27_router.py on the Jetson, TCP 4560 to the laptop at
+sensors and UAV 0's downward camera (the AirSim city hardware-in-the-loop set-up: W2's p27_router.py on the Jetson, TCP 4560 to the laptop at
 192.168.55.100). The Jetson Orin Nano runs the network model, every UAV's decisions (1 s rounds, real time) AND the int8
 damage VLM on UAV 0's frames (one every 5 s of mission time) in a separate process (vlm_worker.py), so the 250 Hz HIL
 loop and the decision rounds never wait for it.
@@ -17,7 +17,7 @@ alpha = 0.1 conformal set C -> set-midpoint weight w_hat (Lemma 2) -> buildings 
           --bld-radius m of every building whose latest frame gave a weight; applied after round t, used from round t+1.
           --vlm-share all: every UAV's planner gets UAV 0's building weights (assumes they travel with the relayed
           decision list; not counted as messages); own: only UAV 0's planner.
-Each mission writes <out>/<name>/result.json, rounds.jsonl (flight + decision timing, VehCom format), vlm_frames.jsonl
+Each mission writes <out>/<name>/result.json, rounds.jsonl (flight + decision timing, the earlier MAQAC work format), vlm_frames.jsonl
 (per frame: capture time, capture/VLM ms, logits, P, set, w_hat, seen buildings, when applied, belief age at use),
 vlm_rounds.jsonl (per round: newest/max belief age, beliefs in use, hook ms, system memory in use).
 After each mission: kinematic twin (no HIL, no VLM) and, for 'prior', a replay twin (no HIL, the same building weights
@@ -37,7 +37,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import run_maqac_hil as RH                                       # noqa: E402  (VehCom runner, netsim on sys.path)
+import run_maqac_hil as RH                                       # noqa: E402  (the earlier MAQAC work runner, netsim on sys.path)
 from run_maqac_hil import HilMover, MissionAbort, TIMING, timed_methods, transfer   # noqa: E402
 import episode as EP                                             # noqa: E402
 from sim import World, realistic                                 # noqa: E402
@@ -272,7 +272,7 @@ def main():
     ap.add_argument('--buildings', default=os.path.join(HERE, 'buildings.json'))
     ap.add_argument('--fake-run', default=os.path.join(ROOT, 'results/vlm_damage/city_step6/runs/s6_n2_maqac_seq_20000'))
     ap.add_argument('--fake-logits', default=os.path.join(ROOT, 'results/vlm_damage/jetson/20261110_173516/city.jsonl'))
-    ap.add_argument('--airsim-ip', default='192.168.55.100', help='laptop on the USB network (VehCom set-up 2)')
+    ap.add_argument('--airsim-ip', default='192.168.55.100', help='laptop on the USB network (the AirSim city hardware-in-the-loop set-up)')
     ap.add_argument('--airsim-port', type=int, default=41451)
     ap.add_argument('--relay-port', type=int, default=41460)
     ap.add_argument('--frame-every', type=int, default=5)
@@ -329,7 +329,7 @@ def main():
         p_ground = np.array([*u, city.start_height(0, u)])
     print(f'VLM HIL missions {len(missions)}: {missions}; ground {np.round(p_ground, 1).tolist()}; buildings in area '
           f'{len(centres)}; chain {a.chain}; VLM {a.vlm_model}/{a.vlm_frames}', flush=True)
-    # ---- VLM worker first (spawn: CUDA must not be forked), then the HIL server (fork, as VehCom)
+    # ---- VLM worker first (spawn: CUDA must not be forked), then the HIL server (fork, as the earlier MAQAC work)
     ctx = mp.get_context('spawn')
     vpath = []
     if a.vlm_python:

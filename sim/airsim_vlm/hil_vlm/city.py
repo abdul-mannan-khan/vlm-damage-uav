@@ -1,5 +1,5 @@
 """[VLM paper copy, 12 Nov 2026: keep-out boxes added (planner ceiling only, as run_maqac_airsim.py --keepout in step 6);
- heightmap.py also looked up next to this file (Jetson bundle). Source: maqac-vehcom sim/hil/city.py]
+ heightmap.py also looked up next to this file (Jetson bundle). Source: an earlier MAQAC codebase city.py]
 City geometry for the MAQAC HIL runner: the CityEnviron scenario of the AirSim campaign without AirSim.
 
 Same 600 m area, frame (origin N 40, E -10), surveyed height map and tower-climb rule as

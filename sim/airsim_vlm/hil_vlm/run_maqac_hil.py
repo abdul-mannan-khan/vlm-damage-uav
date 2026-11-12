@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""[VLM paper copy, 12 Nov 2026: only the netsim search path changed; imported by run_vlm_hil.py. Source maqac-vehcom
+"""[VLM paper copy, 12 Nov 2026: only the netsim search path changed; imported by run_vlm_hil.py. Source an earlier MAQAC codebase 
  sim/hil/run_maqac_hil.py @5e19bff, md5 3da573fb]
 MAQAC hardware-in-the-loop missions: UAV 0 of the fleet is flown by the real PX4 firmware on a Pixhawk (HITL),
 the decisions of the whole fleet are computed on the companion computer (Jetson, timed), UAVs 1..n-1 stay on the

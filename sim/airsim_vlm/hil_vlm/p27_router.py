@@ -1,4 +1,4 @@
-"""MAQAC copy (4 Nov 2026, maqac-vehcom-a5) of W2's router with ONE change: only a whitelist of Pixhawk messages goes to
+"""MAQAC copy (4 Nov 2026, an earlier MAQAC session) of W2's router with ONE change: only a whitelist of Pixhawk messages goes to
 AirSim. The Windows AirSim 1.8.1 CityEnviron build rejects any decoded message longer than its old MAVLink definition
 ("Message length 37 doesn't match expected length 36" after the first heartbeat), then drops the vehicle. AirSim needs
 only HEARTBEAT and HIL_ACTUATOR_CONTROLS; fixed-length state messages are passed as well. Everything else still goes to

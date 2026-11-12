@@ -1,12 +1,12 @@
 #!/bin/bash
 # Closed-loop VLM HIL campaign (VLM paper, IEEE TVT), on the Jetson in ~/vlm_hil. PREPARED 12 Nov 2026, NOT YET RUN.
-# Adapted from maqac-vehcom sim/hil/hil_campaign_city.sh (VehCom set-up 2, 15 missions on 4-5 Nov), same safety protocol:
+# Adapted from an earlier MAQAC codebase hil_campaign_city.sh (the AirSim city hardware-in-the-loop set-up, 15 missions on 4-5 Nov), same safety protocol:
 #   both locks + owner files -> full parameter backup (else by name) -> HITL set-up for AirSim (SYS_HITL=1, COM_RC_IN_MODE=4,
 #   reboot, HIL_ACT_FUNC1..4=101..104) + limits for this experiment -> reboot -> 60 s shakedown -> wait for CONTROL GO ->
 #   missions -> restore (HIL_ACT_FUNC*=0 first, then the backup) -> reboot -> read back by name until 0 differences ->
 #   standard limits GF_MAX_HOR_DIST 100 / GF_MAX_VER_DIST 60 / GF_ACTION 3 and SYS_HITL 0 checked (written if needed) ->
 #   hand-over checks -> owner files idle.
-# Changes from VehCom: own folder/logs/backups (~/vlm_hil), the VLM runner (run_vlm_hil.py) and its memory pre-check,
+# Changes from the earlier MAQAC work: own folder/logs/backups (~/vlm_hil), the VLM runner (run_vlm_hil.py) and its memory pre-check,
 # tegrastats logged for the whole campaign, geofence handled by the 11 Nov 2026 standard practice
 # (the lab fence procedure: set the limits the experiment needs, restore the same-day backup,
 # make sure 100/60/3 is left, read back), final SYS_HITL 0 check.
@@ -149,7 +149,7 @@ HAVE_BACKUP=1
 grep -E " (SYS_HITL|SYS_AUTOSTART|PWM_MAIN_MIN1|PWM_MAIN_MAX1|COM_RC_IN_MODE|GF_ACTION|GF_MAX_HOR_DIST|GF_MAX_VER_DIST) " $B | awk '{print $3"="$4}' | tr '\n' ' ' | sed 's/^/baseline: /' | tee -a $L; echo
 cp $B params/params_before_vlm_hil_$(date -u +%F_%H%M).params
 
-# ---- HITL set-up for AirSim (W2 P27 steps) + the VehCom speed limits; limits for this experiment (DECIDE D5)
+# ---- HITL set-up for AirSim (W2 P27 steps) + the the earlier MAQAC work speed limits; limits for this experiment (DECIDE D5)
 LIM=""; [ "$FENCE_OFF" = 1 ] && LIM="GF_ACTION=0 GF_MAX_HOR_DIST=0 GF_MAX_VER_DIST=0"
 pset SYS_HITL=1 COM_RC_IN_MODE=4 MPC_XY_VEL_MAX=20 MPC_Z_VEL_MAX_DN=2.0 MPC_Z_VEL_MAX_UP=3.0 $LIM
 reboot_fc 45

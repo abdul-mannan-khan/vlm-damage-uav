@@ -34,11 +34,11 @@ lists all of them, including the ones that failed.
 - LoRA adapter weights (120 MB per seed): available from the authors on request.
 - Raw AirSim camera frames of the city flights (about 1 GB).
 
-## Hardware-in-the-loop (validation)
+## Closed-loop hardware in the loop
 
-30 missions with a Pixhawk 6C flight controller (PX4, hardware in the loop) and the fleet decisions on a Jetson Orin Nano:
-summaries in `results/hil/`, replay video `media/hil_airsim_replay.mp4`. The HIL scripts are archived at
-https://doi.org/10.5281/zenodo.24113000.
+12 missions with a Pixhawk 6C flight controller (PX4 HITL, propellers off) flying UAV 0 through AirSim CityEnviron, and the
+int8 VLM plus the fleet decisions on a Jetson Orin Nano: code in `sim/airsim_vlm/hil_vlm/` (`DESIGN.md`), results in
+`results/vlm_damage/hil_vlm_20261112/` and `results/vlm_damage/step13_summary.json`.
 
 ## Licence
 

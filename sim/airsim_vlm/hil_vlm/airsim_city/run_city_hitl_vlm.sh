@@ -1,5 +1,5 @@
 #!/bin/bash
-# [VLM paper copy 12 Nov 2026: settings_hitl_city_vlm.json = VehCom settings + downward camera "down" 640x480, 60 deg, Scene+Segmentation, as step 6 (make_settings_city.camera)]
+# [VLM paper copy 12 Nov 2026: settings_hitl_city_vlm.json = the earlier MAQAC work settings + downward camera "down" 640x480, 60 deg, Scene+Segmentation, as step 6 (make_settings_city.camera)]
 # MAQAC city HIL, laptop side: AirSim 1.8.1 CityEnviron (Windows build, Wine 9 + DXVK 2.3.1) with ONE PX4 HITL vehicle,
 # UAV 0 on the pad used by the 52-mission campaign (X 0, Y -4). Settings follow W2's bridge
 # (~/lit_results/x500_airsim_hitl_bridge/README.md): no "Sensors" block (AirSim 1.8.1 then sends no HIL_SENSOR/HIL_GPS),

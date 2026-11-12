@@ -1,6 +1,6 @@
 #!/bin/bash
 # VLM-damage step-6 replay video on one Vast GPU box (user OK in this chat, 10 Nov 2026: "props off, USB power, yes video").
-# Copied from maqac-vehcom/cloud/vast_hil_replay.sh (unchanged there) and adapted: our run, 2 UAVs, our replay script.
+# Copied from an earlier MAQAC codebase vast_hil_replay.sh (unchanged there) and adapted: our run, 2 UAVs, our replay script.
 # Prebuilt image abdulmannan617/airsim-city-wine (AirSim 1.8.1 CityEnviron under Wine). Copies only the replay script,
 # one step-6 run's logs and frames and the AirSim survey height map (no restricted city files). Tries offers in turn; every box is
 # destroyed after its attempt; 3 h hard stop per box. Usage: cloud/vast_hil_replay.sh <offer> [<offer> ...]

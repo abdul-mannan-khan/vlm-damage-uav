@@ -1,4 +1,4 @@
-"""[VLM paper copy, 12 Nov 2026: only the netsim search path changed; source maqac-vehcom sim/hil/hil_link.py]
+"""[VLM paper copy, 12 Nov 2026: only the netsim search path changed; source an earlier MAQAC codebase hil_link.py]
 PX4 HITL link for one UAV of the MAQAC fleet: 6-DOF physics + sensors on the companion computer, setpoint server.
 
 Source: the classes Sim and Link and the 250 Hz loop are copied from Paper A's HIL

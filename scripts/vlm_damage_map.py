@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Step 3 of paper/adhocnet/LLM_INTENT_PLAN_2026-11-05_damage.md: damage mapping as a by-product of MAQAC's flight.
 
-World: frozen VehCom netsim v3 copy (sim/netsim_v3_snap_20261103), realistic(), scenario 'disaster', no city files.
+World: frozen MAQAC netsim v3 copy (sim/netsim_v3_snap_20261103), realistic(), scenario 'disaster', no city files.
 Buildings: centres of the procedural Manhattan grid (side 24.5 m, street 20.2 m, pitch 44.7 m) over the area; the radio
 model is unchanged (same as the v3 area study), so the service score is comparable with earlier rows.
 Damage labels (1 no damage, 2 minor, 3 major, 4 total; fixed before any run): with s = exp(-d^2 / (2 R^2)), R = 0.08 L,
