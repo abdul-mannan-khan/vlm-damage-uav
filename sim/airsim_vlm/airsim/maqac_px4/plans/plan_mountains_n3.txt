@@ -1,0 +1,11 @@
+# origin of the mountains area is set after the height survey
+mount_n3_maqac_onboard_20000 3 --method maqac --perception onboard --seed 20000 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_rag_onboard_20000 3 --method rag --perception onboard --seed 20000 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_maqac_onboard_20001 3 --method maqac --perception onboard --seed 20001 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_rag_onboard_20001 3 --method rag --perception onboard --seed 20001 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_maqac_onboard_20002 3 --method maqac --perception onboard --seed 20002 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_rag_onboard_20002 3 --method rag --perception onboard --seed 20002 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_maqac_onboard_20003 3 --method maqac --perception onboard --seed 20003 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_rag_onboard_20003 3 --method rag --perception onboard --seed 20003 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_maqac_onboard_20004 3 --method maqac --perception onboard --seed 20004 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3
+mount_n3_rag_onboard_20004 3 --method rag --perception onboard --seed 20004 --scenario urban --T 300 --L 600 --origin-ne 0 0 --heightmap /work/maqac/survey_mountains/heightmap.npz --layer 3

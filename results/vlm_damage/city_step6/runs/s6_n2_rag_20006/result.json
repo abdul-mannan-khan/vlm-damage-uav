@@ -1,0 +1,215 @@
+{
+ "method": "rag",
+ "keepout": [
+  [
+   -80.0,
+   36.0,
+   -339.0,
+   -235.0,
+   240.0
+  ]
+ ],
+ "scenario": "disaster",
+ "n_uav": 2,
+ "seed": 20006,
+ "T": 300,
+ "alt": 100.0,
+ "layer": 3.0,
+ "L": 600.0,
+ "origin_ne": [
+  40.0,
+  -10.0
+ ],
+ "n_users": 72,
+ "margin_up": 20.0,
+ "dry_run": false,
+ "px4": {
+  "qos_score": 166.71769688825182,
+  "qos_score_realised": 167.0,
+  "qos_max": 167.0,
+  "users_total": 85,
+  "users_served": 85,
+  "sessions_expected": 84.80609184672498,
+  "mean_wait_s": 0.5440057155764234,
+  "emergency_total": 26,
+  "emergency_served": 26,
+  "emergency_score": 77.96492233763996,
+  "emergency_wait_s": 0.016155837363001524,
+  "realtime_total": 30,
+  "realtime_served": 30,
+  "realtime_score": 59.86998029953376,
+  "realtime_wait_s": 0.2179761181075688,
+  "besteffort_total": 29,
+  "besteffort_served": 29,
+  "besteffort_score": 28.882794251078128,
+  "besteffort_wait_s": 1.3545224313562374,
+  "continuity": 0.47464494391606604,
+  "blocked": 181,
+  "interf_outage": 0,
+  "disconnected_uav_s": 0,
+  "rtb": 0,
+  "collisions": 0,
+  "near_misses": 0,
+  "energy_wh": 85.42489624237007,
+  "score_per_wh": 1.9516289070487765,
+  "distance_m": 5014.996289045644,
+  "mean_hops": 1.0,
+  "mean_offload_lat_s": null,
+  "mean_attached": 18.548333333333332,
+  "failed_uavs": 0,
+  "J_session": 164.56925416617176,
+  "session_frac_mean": 0.9770584887141606,
+  "users_abandoned": 0,
+  "swap_wait_s": 0,
+  "emergency_J_session": 77.7576027210709,
+  "realtime_J_session": 59.3617616228417,
+  "besteffort_J_session": 27.44988982225916,
+  "tx_msgs": 2400,
+  "tx_attempts": 2400,
+  "tower_climb_s": 0,
+  "coord_iters": 2.0,
+  "coord_iters_max": 2,
+  "coord_msgs": 4.0,
+  "decide_ms": 3.1577806275648377,
+  "decide_ms_p95": 4.876345116645098,
+  "record_coverage": 1.0,
+  "record_age_s": 0.5,
+  "method": "rag",
+  "config": "disaster_2uav",
+  "seed": 20006,
+  "n_uav": 2,
+  "scenario": "disaster",
+  "perception": "onboard",
+  "episode_time_s": 428.35
+ },
+ "kinematic": {
+  "qos_score": 166.56470663093543,
+  "users_served": 85,
+  "mean_wait_s": 0.9557704214587762,
+  "energy_wh": 90.83473808196513,
+  "distance_m": 3813.373710310077,
+  "continuity": 0.46172902784896636,
+  "rtb": 0,
+  "J_session": 161.01498211119198,
+  "session_frac_mean": 0.9461690575724585,
+  "users_total": 85,
+  "collisions": 0,
+  "coord_msgs": 4.0
+ },
+ "delta_qos_pct": 0.09185034477644569,
+ "delta_J_pct": 2.2074169796977685,
+ "flight": {
+  "track_err_mean_m": 3.540701979247942,
+  "track_err_p95_m": 13.913730118266184,
+  "track_err_max_m": 15.342054226742365,
+  "min_separation_m": 54.413086113898466,
+  "min_clearance_m": 20.152915954589844,
+  "min_clearance_15m_m": 19.17706298828125,
+  "hold_s": [
+   43.0,
+   50.0
+  ],
+  "climb_s": [
+   288.0,
+   241.0
+  ],
+  "climb_m": [
+   219.3,
+   366.4
+  ],
+  "max_up_m": [
+   135.4,
+   263.5
+  ],
+  "radio_alt_mean_m": 141.1738588853677,
+  "radio_alt_p95_m": 236.31672439575183,
+  "climb_energy_wh": 3.2539148542616103
+ },
+ "safety": {
+  "startup": {
+   "samples": 51,
+   "pair_s": 10.199999999999996,
+   "min_sep_m": 4.0,
+   "near_events": 1,
+   "near_s": 10.199999999999996,
+   "close_s": 10.199999999999996,
+   "min_clear_m": 0.14,
+   "below_10m_clear_s": 20.39999999999999,
+   "events": [
+    {
+     "t_sim": 0.2,
+     "pair": [
+      0,
+      1
+     ],
+     "d_m": 4.0
+    }
+   ],
+   "near_contact": true
+  },
+  "takeoff": {
+   "samples": 223,
+   "pair_s": 44.600000000000094,
+   "min_sep_m": 3.98,
+   "near_events": 0,
+   "near_s": 36.79999999999998,
+   "close_s": 38.400000000000006,
+   "min_clear_m": 0.14,
+   "below_10m_clear_s": 13.600000000000007,
+   "events": [],
+   "near_contact": false
+  },
+  "mission": {
+   "samples": 1500,
+   "pair_s": 299.99999999999153,
+   "min_sep_m": 54.17,
+   "near_events": 0,
+   "near_s": 0.0,
+   "close_s": 0.0,
+   "min_clear_m": 20.15,
+   "below_10m_clear_s": 0.0,
+   "events": [],
+   "near_contact": false
+  }
+ },
+ "users": null,
+ "users_disabled_at": null,
+ "pacing": {
+  "free_run": true,
+  "steps": 1774,
+  "overruns": 62,
+  "overrun_frac": 0.03494926719278467,
+  "overrun_max_s": 0.28
+ },
+ "sim_s_mission": 299.9999999999882,
+ "wall_s": 511.1,
+ "cert": null,
+ "collisions_airsim": {
+  "UAV0": null,
+  "UAV1": null
+ },
+ "collisions_at_rest": {
+  "UAV0": {
+   "object": "Landscape_1",
+   "object_id": -1,
+   "t_ns": 1255978822301286912,
+   "pos_ned": [
+    0.0,
+    0.0,
+    1.61
+   ]
+  },
+  "UAV1": {
+   "object": "Landscape_1",
+   "object_id": -1,
+   "t_ns": 1255978822301286912,
+   "pos_ned": [
+    0.0,
+    0.0,
+    1.61
+   ]
+  }
+ },
+ "collisions_in_flight": {},
+ "collision_events": []
+}

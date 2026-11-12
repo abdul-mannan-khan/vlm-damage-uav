@@ -1,0 +1,43 @@
+1
+00:00:00,100 --> 00:00:08,866
+Trustworthy onboard vision language damage assessment for multi UAV networks, with perception aware coordination guarantees.
+
+2
+00:00:09,266 --> 00:00:27,519
+UAVs that restore connectivity after a disaster can also map building damage. But off the shelf vision language models grade damage poorly, and coordination guarantees assume the objective is known exactly. A perception error silently voids the guarantee.
+
+3
+00:00:27,919 --> 00:00:46,891
+Each camera frame goes to a fine tuned Qwen 2.5 VL 3B model. Its answer becomes a calibrated belief and a conformal label set with ninety percent coverage. The planner uses the midpoint of each set and relays its decisions over the backhaul.
+
+4
+00:00:47,291 --> 00:01:07,685
+Fine tuning raises damage macro F1 from 0.27 to 0.70. After calibration the expected calibration error is 0.046, and the label sets cover 93 percent of test images, with a lower bound of 90.6 percent.
+
+5
+00:01:08,085 --> 00:01:21,211
+We prove that a plan computed on perceived weights keeps beta times the optimum, minus a term that counts weight errors only on the users the plans serve. The conformal sets bound that term.
+
+6
+00:01:21,611 --> 00:01:41,193
+Relaying the decision list keeps the one half guarantee on any connected backhaul, while one hop coordination can fall to one over k. With 200 metre links the relayed planner leads by 2.3 points at six UAVs; with complete links the one hop baseline is slightly better.
+
+7
+00:01:41,593 --> 00:01:53,215
+On an exact optimum test bench, planning on the conformal sets instead of the top label halves the loss caused by perception: 1.1 versus 2.1 points of the optimum.
+
+8
+00:01:53,615 --> 00:02:16,203
+In a network simulator with 250 metre links, the relayed planner lost the gateway path for three to five percent of UAV time. A chain rule on the planned targets cut that by 83 to 86 percent, and the planner then beat one hop coordination at every fleet size, in 29 of 30 seeds.
+
+9
+00:02:16,603 --> 00:02:40,045
+This is a replay of one AirSim City Environ mission, flown by PX4 software autopilots. The model read each downward frame during the flight on a cloud GPU. In 48 missions there was no collision, and no false major or total damage alarm in 9,734 frames of the intact city.
+
+10
+00:02:40,445 --> 00:02:54,471
+On a Jetson Orin Nano, an 8 bit version of the model reads a camera frame in 1.8 seconds, well inside the five second frame period, and keeps ninety percent coverage after re-calibration.
+
+11
+00:02:54,871 --> 00:03:09,355
+A compact vision language model can be a trustworthy input to UAV fleet coordination, when its uncertainty is calibrated and carried into the guarantee. The next step is a closed loop flight with the model onboard.

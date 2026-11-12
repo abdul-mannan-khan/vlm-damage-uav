@@ -1,0 +1,323 @@
+{
+ "method": "maqac_seq",
+ "keepout": [
+  [
+   -80.0,
+   36.0,
+   -339.0,
+   -235.0,
+   240.0
+  ]
+ ],
+ "scenario": "disaster",
+ "n_uav": 6,
+ "seed": 20000,
+ "T": 300,
+ "alt": 100.0,
+ "layer": 3.0,
+ "L": 600.0,
+ "origin_ne": [
+  40.0,
+  -10.0
+ ],
+ "n_users": 72,
+ "margin_up": 20.0,
+ "dry_run": false,
+ "px4": {
+  "qos_score": 159.3975122719896,
+  "qos_score_realised": 160.0,
+  "qos_max": 161.0,
+  "users_total": 86,
+  "users_served": 85,
+  "sessions_expected": 84.77589885738605,
+  "mean_wait_s": 0.1789052109886251,
+  "emergency_total": 20,
+  "emergency_served": 20,
+  "emergency_score": 59.49296424577774,
+  "emergency_wait_s": 0.31105619983719496,
+  "realtime_total": 35,
+  "realtime_served": 35,
+  "realtime_score": 69.9192745015035,
+  "realtime_wait_s": 0.11578688363201915,
+  "besteffort_total": 31,
+  "besteffort_served": 30,
+  "besteffort_score": 29.985273524708386,
+  "besteffort_wait_s": 0.16444260033895214,
+  "continuity": 0.497823422509615,
+  "blocked": 177,
+  "interf_outage": 289,
+  "disconnected_uav_s": 0,
+  "rtb": 0,
+  "collisions": 0,
+  "near_misses": 0,
+  "energy_wh": 252.468638642109,
+  "score_per_wh": 0.6313556928468494,
+  "distance_m": 15984.721636491122,
+  "mean_hops": 1.0,
+  "mean_offload_lat_s": null,
+  "mean_attached": 6.945165094339623,
+  "failed_uavs": 0,
+  "J_session": 154.5571287858762,
+  "session_frac_mean": 0.9535394261828096,
+  "users_abandoned": 1,
+  "swap_wait_s": 0,
+  "emergency_J_session": 58.803022977534525,
+  "realtime_J_session": 68.60852448396207,
+  "besteffort_J_session": 27.1455813243796,
+  "tx_msgs": 12600,
+  "tx_attempts": 12600,
+  "tower_climb_s": 0,
+  "coord_iters": 6.0,
+  "coord_iters_max": 6,
+  "coord_msgs": 5.0,
+  "decide_ms": 1.2157356750685722,
+  "decide_ms_p95": 1.8242486577946693,
+  "record_coverage": 1.0,
+  "record_age_s": 0.8333333333333334,
+  "method": "maqac_seq",
+  "config": "disaster_6uav",
+  "seed": 20000,
+  "n_uav": 6,
+  "scenario": "disaster",
+  "perception": "onboard",
+  "episode_time_s": 428.06
+ },
+ "kinematic": {
+  "qos_score": 160.5504015681619,
+  "users_served": 86,
+  "mean_wait_s": 0.17682491783759458,
+  "energy_wh": 252.86680271327273,
+  "distance_m": 14659.834580754512,
+  "continuity": 0.5066566503902175,
+  "rtb": 0,
+  "J_session": 159.18053495018117,
+  "session_frac_mean": 0.9849630602226018,
+  "users_total": 86,
+  "collisions": 0,
+  "coord_msgs": 5.0
+ },
+ "delta_qos_pct": -0.7180855886447869,
+ "delta_J_pct": -2.904504728390297,
+ "flight": {
+  "track_err_mean_m": 3.415832065459709,
+  "track_err_p95_m": 13.939176833689523,
+  "track_err_max_m": 19.605705539457613,
+  "min_separation_m": 27.395604836855217,
+  "min_clearance_m": 19.824981689453125,
+  "min_clearance_15m_m": 19.180068969726562,
+  "hold_s": [
+   39.0,
+   93.0,
+   15.0,
+   59.0,
+   16.0,
+   20.0
+  ],
+  "climb_s": [
+   298.0,
+   241.0,
+   264.0,
+   261.0,
+   300.0,
+   276.0
+  ],
+  "climb_m": [
+   206.4,
+   468.3,
+   154.0,
+   382.6,
+   246.1,
+   326.0
+  ],
+  "max_up_m": [
+   197.8,
+   263.2,
+   168.8,
+   269.6,
+   223.3,
+   212.8
+  ],
+  "radio_alt_mean_m": 175.78090412100156,
+  "radio_alt_p95_m": 264.7702972412109,
+  "climb_energy_wh": 9.907748540242514
+ },
+ "safety": {
+  "startup": {
+   "samples": 51,
+   "pair_s": 152.99999999999986,
+   "min_sep_m": 4.0,
+   "near_events": 7,
+   "near_s": 71.40000000000047,
+   "close_s": 152.99999999999986,
+   "min_clear_m": 0.14,
+   "below_10m_clear_s": 61.20000000000006,
+   "events": [
+    {
+     "t_sim": 0.2,
+     "pair": [
+      0,
+      1
+     ],
+     "d_m": 4.0
+    },
+    {
+     "t_sim": 0.2,
+     "pair": [
+      0,
+      3
+     ],
+     "d_m": 4.0
+    },
+    {
+     "t_sim": 0.2,
+     "pair": [
+      1,
+      2
+     ],
+     "d_m": 4.0
+    },
+    {
+     "t_sim": 0.2,
+     "pair": [
+      1,
+      4
+     ],
+     "d_m": 4.0
+    },
+    {
+     "t_sim": 0.2,
+     "pair": [
+      2,
+      5
+     ],
+     "d_m": 4.0
+    },
+    {
+     "t_sim": 0.2,
+     "pair": [
+      3,
+      4
+     ],
+     "d_m": 4.0
+    },
+    {
+     "t_sim": 0.2,
+     "pair": [
+      4,
+      5
+     ],
+     "d_m": 4.0
+    }
+   ],
+   "near_contact": true
+  },
+  "takeoff": {
+   "samples": 262,
+   "pair_s": 786.0000000000417,
+   "min_sep_m": 3.05,
+   "near_events": 0,
+   "near_s": 270.3999999999932,
+   "close_s": 633.8000000000071,
+   "min_clear_m": -0.1,
+   "below_10m_clear_s": 40.80000000000001,
+   "events": [],
+   "near_contact": false
+  },
+  "mission": {
+   "samples": 1500,
+   "pair_s": 4499.999999998098,
+   "min_sep_m": 26.85,
+   "near_events": 0,
+   "near_s": 0.0,
+   "close_s": 0.0,
+   "min_clear_m": 19.82,
+   "below_10m_clear_s": 0.0,
+   "events": [],
+   "near_contact": false
+  }
+ },
+ "users": null,
+ "users_disabled_at": null,
+ "pacing": {
+  "free_run": true,
+  "steps": 1813,
+  "overruns": 107,
+  "overrun_frac": 0.059018201875344733,
+  "overrun_max_s": 0.404
+ },
+ "sim_s_mission": 299.9999999999876,
+ "wall_s": 521.7,
+ "cert": null,
+ "collisions_airsim": {
+  "UAV0": null,
+  "UAV1": null,
+  "UAV2": null,
+  "UAV3": null,
+  "UAV4": null,
+  "UAV5": null
+ },
+ "collisions_at_rest": {
+  "UAV0": {
+   "object": "Landscape_1",
+   "object_id": -1,
+   "t_ns": 1255947239333588480,
+   "pos_ned": [
+    0.0,
+    0.0,
+    1.61
+   ]
+  },
+  "UAV1": {
+   "object": "Landscape_1",
+   "object_id": -1,
+   "t_ns": 1255947239333599232,
+   "pos_ned": [
+    0.0,
+    0.0,
+    1.61
+   ]
+  },
+  "UAV2": {
+   "object": "Landscape_1",
+   "object_id": -1,
+   "t_ns": 1255947239333604608,
+   "pos_ned": [
+    0.0,
+    0.0,
+    1.61
+   ]
+  },
+  "UAV3": {
+   "object": "Landscape_1",
+   "object_id": -1,
+   "t_ns": 1255947239333614080,
+   "pos_ned": [
+    0.0,
+    0.0,
+    1.61
+   ]
+  },
+  "UAV4": {
+   "object": "Landscape_1",
+   "object_id": -1,
+   "t_ns": 1255947239333618432,
+   "pos_ned": [
+    0.0,
+    0.0,
+    1.61
+   ]
+  },
+  "UAV5": {
+   "object": "Landscape_1",
+   "object_id": -1,
+   "t_ns": 1255947239333609216,
+   "pos_ned": [
+    0.0,
+    0.0,
+    1.61
+   ]
+  }
+ },
+ "collisions_in_flight": {},
+ "collision_events": []
+}

@@ -1,0 +1,31 @@
+# Snapshot of maqac-vehcom (read-only source) taken 2026-11-09_05:20:53 UTC, HEAD 1f91659 plus its uncommitted changes.
+# Copied for the VLM paper's own flights (user 7-9 Nov 2026). Do not sync back.
+edba23071da4f552f6c938eaaaba7582  airsim/GROUND_CHECK.md
+10d3038840d2bb247c65ec5fb59d9b2d  airsim/make_settings_city.py
+c8f9aa02d54139b4b7c3291c5cb21fd6  airsim/maqac_px4/airsim_cert_calibrate.py
+c77d7449a0d35559cd389c26cb3a5507  airsim/maqac_px4/airsim_reset.py
+b99553646ab1f1e3e25ce347e2da3bee  airsim/maqac_px4/heightmap.py
+b69f189f45149e559d5b652b43ca3cb9  airsim/maqac_px4/plans/plan_city_cert_n4_keepout.txt
+221b6472a142d7125a51561023276f03  airsim/maqac_px4/plans/plan_city_cert_n4.txt
+4e21777132072b5908ac414bd4469dfb  airsim/maqac_px4/plans/plan_city_n3.txt
+612d3f6f2cb53d67468907c2143148e0  airsim/maqac_px4/plans/plan_city_n6_keepout.txt
+21bd383baa70788ac122a7c8d61ec9ef  airsim/maqac_px4/plans/plan_city_n6.txt
+930bc92e3f016b4559d707ae3af00328  airsim/maqac_px4/plans/plan_mountains_n3.txt
+b02e13a96953662f266b5d5943c2022e  airsim/maqac_px4/px4_fleet.py
+10a37f7abcce36489cec4388c4845025  airsim/maqac_px4/px4_stack.sh
+cf9ba924817b4c6953efbcffe6d05e6c  airsim/maqac_px4/run_fleet_batch.sh
+44b740cfba0326da6d0481f65cf06ff9  airsim/maqac_px4/run_maqac_airsim.py
+584b3760e099fb3f9aa8b1e09fc44c2e  airsim/maqac_px4/survey_heightmap.py
+ebb2c4a634e8c9580aa2e4ca09588b6f  airsim/maqac_px4/vla_render_pilot.py
+c3d1ba2891808cd51379a767e36ae0eb  airsim/maqac_px4/vm_test.sh
+cef3c8b4b25115f20e3265d0adce3c9a  netsim/agents.py
+a9a5a80ed3f0ccdc9ab4653edc357290  netsim/baseline_he2025.py
+bd093f25685da7698959e1a5372f259d  netsim/baselines_interf.py
+17e770622ec7719beda6d5377716e7a0  netsim/episode.py
+02f25b29160014882b371eab983a2b1c  netsim/mappo.py
+f36841fd4d1684facd2f32f40143d5ab  netsim/sim.py
+ac46957c927e27ae982047c6ded9fc76  netsim/sixdof.py
+d41d8cd98f00b204e9800998ecf8427e  netsim/third_party/__init__.py
+c9ab61e8ba7b7c02aec03d5343391155  netsim/third_party/LICENSE_wind_aware_delivery
+5bb2920352d075b53a8c7bbfd66787c9  netsim/third_party/wad_quadrotor.py
+2d4eed4fffcdeda0c36c86684e0ede09  survey/heightmap.npz

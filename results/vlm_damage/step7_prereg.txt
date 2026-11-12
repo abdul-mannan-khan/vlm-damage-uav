@@ -1,0 +1,3 @@
+step7 pre-registration appended to paper/adhocnet/LLM_INTENT_PLAN_2026-11-05_damage.md
+file md5 after append: 6137f7003350983b104762e1ddce0b95
+time: 2026-11-10 13:57 UTC (before any step-7 code was written or run)

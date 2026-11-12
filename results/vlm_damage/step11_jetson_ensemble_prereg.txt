@@ -1,0 +1,23 @@
+Step 11 pre-registration: the four-seed ensemble ON the Jetson Orin Nano (written 12 Nov 2026, before any run)
+
+Why: reviewers' point 4 (the user's list, 12 Nov): only seed 0 runs onboard and it misses the ECE bar; the calibrated
+ensemble (ECE 0.046) ran only on the desktop GPU.
+
+Method (no retraining): the Jetson keeps the existing int8 model W0 + D0 (seed 0's LoRA merged, int8 language-model
+weights). Seed s (s = 1, 2, 3) differs from it only by the low-rank term D_s - D_0 = B_s A_s - B_0 A_0 (scale 2, rank 2 x 16),
+added at run time to every adapted linear layer in bf16. The four seeds run as one batch of 4 copies of the prompt; the
+vision tower is frozen in all seeds, so it runs once and its output is repeated. Seed 0 in the batch adds no term, so it
+must reproduce the existing onboard seed-0 logits (check below).
+
+Phase A (booked 30 min, Jetson only, no Pixhawk): correctness and timing on 40 city frames and 40 test images.
+Phase B (only if A passes; needs a further Jetson slot of about 90 min): all 449 validation and 450 test images, then
+re-calibration on the PC exactly as the desktop ensemble (per-seed vector scaling on validation half A, ensemble
+temperature on half A, conformal threshold on half B, alpha = 0.1), test used once.
+
+Pass bars (reported whether they pass or fail):
+  H11a timing: ensemble city-frame p90 <= 5.0 s (the frame period), measured in phase A on 40 frames (phase B confirms).
+  H11b correctness: in-batch seed-0 top label equals the stored single-model onboard seed-0 label on >= 39 of 40 test
+       images, and the in-batch seed s top label agrees with the desktop bf16 seed s on >= 90 % of the 40 test images.
+  H11c (phase B) onboard ensemble ECE <= 0.05 and conformal coverage >= 0.90 on the test set.
+  H11d memory: peak RAM (tegrastats) below 7.4 GB of 7.6 GB, no out-of-memory.
+If H11a fails, the fallback reported in the paper is: run the ensemble every second frame, or seed 0 only, as now.

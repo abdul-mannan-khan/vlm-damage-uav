@@ -1,0 +1,21 @@
+{
+ "base": "Qwen/Qwen2.5-VL-3B-Instruct",
+ "adapter": "results/vlm_damage/tune/sft_s0/best",
+ "adapter_md5": "b7a6415ecd747190f26c6fd71d83ac94",
+ "lora_scale": 2.0,
+ "lora_modules_merged": 252,
+ "quantised_tensors": 252,
+ "vision_int8": false,
+ "rel_mean_abs_err_mean": 0.011084647124840153,
+ "rel_mean_abs_err_max": 0.046690382063388824,
+ "shards": {
+  "model-int8-00001.safetensors": "1db8805b7931dc59e6ab8e52f952ebd1",
+  "model-int8-00002.safetensors": "25995a7ac3fe510a8f6f3d13b178a779",
+  "model-int8-00003.safetensors": "60d6f1ac65817b3d178459e1f0582254",
+  "model-int8-00004.safetensors": "ccd533ccf4ea796d6392f50d29c53634"
+ },
+ "base_shards": {
+  "model-00001-of-00002.safetensors": "b0f76da6be4bd3d5135ec107bf28a224",
+  "model-00002-of-00002.safetensors": "0fc7e1a32d6f1e4657dcffa7477084fc"
+ }
+}

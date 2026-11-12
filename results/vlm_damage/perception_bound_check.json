@@ -1,0 +1,39 @@
+{
+ "instances": 200,
+ "weights": {
+  "1": 1.0,
+  "2": 1.5,
+  "3": 2.5,
+  "4": 3.0
+ },
+ "mu": 0.01,
+ "qhat": 0.8866464328384388,
+ "rules": {
+  "oracle": {
+   "ratio_min": 0.9134552858128198,
+   "ratio_mean": 0.9858626786866581,
+   "ratio_p05": 0.9575166476806081,
+   "share_below_half": 0.0,
+   "delta_over_opt_mean": 0.0,
+   "bound_holds_all": true
+  },
+  "argmax": {
+   "ratio_min": 0.877387422552429,
+   "ratio_mean": 0.9793589448812204,
+   "ratio_p05": 0.9393460266649722,
+   "share_below_half": 0.0,
+   "delta_over_opt_mean": 0.2073456238615661,
+   "bound_holds_all": true
+  },
+  "conformal": {
+   "ratio_min": 0.9002673909547877,
+   "ratio_mean": 0.9814516514407291,
+   "ratio_p05": 0.946533564834813,
+   "share_below_half": 0.0,
+   "delta_over_opt_mean": 0.23277086846729503,
+   "bound_holds_all": true,
+   "delta_bound_ge_realised_all": true,
+   "delta_bound_over_opt_mean": 0.3193549197634309
+  }
+ }
+}
