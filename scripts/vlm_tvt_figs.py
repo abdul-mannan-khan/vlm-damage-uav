@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Figures for the TVT draft (paper/vlm_tvt/figures/*.pdf), from saved results only.
-  fig_links.pdf       step 7 idea 1: f/OPT per backhaul regime (n = 6) and MAQAC-S - RAG margin vs fleet size
+  fig_links.pdf       step 7 idea 1: f/OPT per backhaul regime (n = 6) and RSG - RAG margin vs fleet size
   fig_perception.pdf  step 7 idea 2: planning loss vs perception level, with the tight guarantee's mean floor
   fig_reliability.pdf calibrated 4-seed ensemble (V3) on the RescueNet test set: reliability diagram
   fig_jetson.pdf      step 8: per-frame answer time and memory over the Jetson Orin Nano run (int8)
@@ -21,7 +21,7 @@ R, OUT = ROOT / 'results' / 'vlm_damage', ROOT / 'paper' / 'vlm_tvt' / 'figures'
 OUT.mkdir(parents=True, exist_ok=True)
 C = {'maqac_s': '#2a78d6', 'rag': '#eb6834', 'indep': '#1baf7a'}
 MK = {'maqac_s': 'o', 'rag': 's', 'indep': '^'}
-LAB = {'maqac_s': 'MAQAC-S (relay)', 'rag': 'RAG (one-hop)', 'indep': 'No coordination'}
+LAB = {'maqac_s': 'RSG (relay)', 'rag': 'RAG (one-hop)', 'indep': 'No coordination'}
 INK, MUTED = '#1f1f1e', '#77766f'
 plt.rcParams.update({'font.size': 8, 'font.family': 'serif', 'axes.edgecolor': MUTED, 'axes.labelcolor': INK,
                      'xtick.color': INK, 'ytick.color': INK, 'axes.spines.top': False, 'axes.spines.right': False,
@@ -52,7 +52,7 @@ def fig_links():
         ax[1].plot(ns, [S[f'{n}|{reg}']['diff_mean_pts'] for n in ns], ls, marker=mk, color=INK, ms=4.5, mfc='white',
                    label={'complete': 'complete', 'medium': '350 m', 'sparse': '200 m'}[reg])
     ax[1].axhline(0, color=MUTED, lw=0.8)
-    ax[1].set_xlabel('number of UAVs'); ax[1].set_ylabel('MAQAC-S \u2212 RAG (points)'); ax[1].set_xticks([4, 6, 8, 10])
+    ax[1].set_xlabel('number of UAVs'); ax[1].set_ylabel('RSG \u2212 RAG (points)'); ax[1].set_xticks([4, 6, 8, 10])
     ax[1].legend(fontsize=7, loc='upper left')
     ax[1].set_title('(b) paired margin; n = 8, 10 vs upper bound', fontsize=8, color=INK, loc='left')
     fig.tight_layout(); fig.savefig(OUT / 'fig_links.pdf'); plt.close(fig)

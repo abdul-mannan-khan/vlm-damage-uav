@@ -45,6 +45,7 @@ from hil_link import HilClient                                   # noqa: E402
 import vlm_worker as VW                                          # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
+BF_ALIAS = {'maqac_seq_bf': 'maqac_seq'}                       # step 16: RSG-BF as a per-mission planner name
 STEP6_KEEPOUT = [(-80.0, 36.0, -339.0, -235.0, 240.0)]          # plan_step6.txt --keepout
 
 
@@ -57,6 +58,8 @@ def make_cfg(a):
                     arrival_rate=0.1 * s, takeoff=False)
     if a.chain:
         cfg = replace(cfg, seq_relay=True, seq_chain=True)
+    if a.bestfirst:                      # 13 Nov 2026 (step 16): RSG-BF, next decider = largest marginal gain (sec:bf)
+        cfg = replace(cfg, seq_relay=True, seq_bestfirst=True)
     return cfg
 
 
@@ -239,7 +242,7 @@ def run_mission(a, hil, cfg, method, seed, out_dir, city, vlm_mode, req_q, res_q
         rv = VLMLoop(a, None, None, city.fr, centres, blds, 'prior', out_dir, a.vlm_share, replay=list(vl.applied))
         rep = EP.run_episode(cfg, method, seed, log_rounds=False, step_hook=rv)
     fl = mover.stats()
-    out = dict(method=method, chain=a.chain, seed=seed, vlm_planner=vlm_mode, vlm_share=a.vlm_share, vlm_model=a.vlm_model,
+    out = dict(method=method, chain=a.chain, bestfirst=bool(getattr(cfg, 'seq_bestfirst', False)), seed=seed, vlm_planner=vlm_mode, vlm_share=a.vlm_share, vlm_model=a.vlm_model,
                vlm_frames=a.vlm_frames, frame_every_s=a.frame_every, scenario=cfg.scenario, n_uav=cfg.n_uav, T=cfg.T,
                L=cfg.world, n_users=cfg.n_users, arrival_rate=cfg.arrival_rate, altitude=cfg.altitude, v_cap=a.v_cap,
                city=a.city, origin_ne=a.origin_ne, keepout=a.keepout, backend=a.backend, aborted=res is None, note=note,
@@ -260,6 +263,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--methods', nargs='+', default=['maqac_seq'])
     ap.add_argument('--no-chain', dest='chain', action='store_false', help='plain MAQAC-S (step-6 planner) instead of the chain rule')
+    ap.add_argument('--bestfirst', action='store_true', help='RSG-BF: best-first order on the relayed list (step 16)')
     ap.add_argument('--seeds', nargs='+', type=int, default=[20000])
     ap.add_argument('--vlm-planner', nargs='+', default=['off'], choices=('off', 'prior'))
     ap.add_argument('--vlm-share', default='all', choices=('all', 'own'))
@@ -311,7 +315,7 @@ def main():
         a.calib = os.path.join(HERE, 'int8_v2_calibration.npz')
     os.makedirs(a.out, exist_ok=True)
     cfg = make_cfg(a)
-    timed_methods(a.methods)
+    timed_methods(sorted({BF_ALIAS.get(m, m) for m in a.methods}))
     from city import City
     city = City(a.city, L=a.L, origin_ne=a.origin_ne, alt=a.alt, layer=a.layer, n=a.n, keepout=a.keepout)
     blds = json.load(open(a.buildings))
@@ -365,9 +369,12 @@ def main():
             raise SystemExit('HIL not ready (EKF / link): stopping')
         print(f'{time.strftime("%T")} HIL ready: {hil.state()}', flush=True)
         for seed, method, vmode in missions:
-            name = f'{a.tag}{method}{"_chain" if a.chain else ""}_vlm{vmode}_s{seed}' + (f'_T{a.T}' if a.T != 300 else '')
+            name = f'{a.tag}{method}{"_chain" if a.chain else ""}{"_bf" if a.bestfirst else ""}_vlm{vmode}_s{seed}' + (f'_T{a.T}' if a.T != 300 else '')
             print(f'{time.strftime("%T")} mission {name}', flush=True)
-            r = run_mission(a, hil, cfg, method, seed, os.path.join(a.out, name), city, vmode, req_q, res_q, centres, blds)
+            m_run, c_run = method, cfg
+            if method in BF_ALIAS:       # RSG-BF flown in the same batch as RSG and RAG (no reboot in the air)
+                m_run, c_run = BF_ALIAS[method], replace(cfg, seq_relay=True, seq_bestfirst=True)
+            r = run_mission(a, hil, c_run, m_run, seed, os.path.join(a.out, name), city, vmode, req_q, res_q, centres, blds)
             r['name'] = name
             short = {k: r.get(k) for k in ('name', 'aborted', 'note', 'delta_J_pct', 'delta_J_vs_replay_pct', 'wall_s')}
             if r.get('hil'):

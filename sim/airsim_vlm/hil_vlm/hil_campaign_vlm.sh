@@ -31,12 +31,14 @@ B=params/params_before_vlm_hil_$(date -u +%m%d_%H%M).params
 REF=${REF:-params/reference_paperA_2026-11-02.params}     # names/types for a by-name backup (copy from ~/maqac_hil/params)
 SEEDS=${SEEDS:-"20000 20001 20002 20003 20004 20005"}     # DECIDE D2 (DESIGN.md: 6 seeds x 2 arms = 12 missions ~ 1.6 h)
 VLM_PLANNER=${VLM_PLANNER:-"off prior"}                   # DECIDE D2
+METHODS=${METHODS:-maqac_seq}                              # step 16 (13 Nov): "maqac_seq maqac_seq_bf rag"
+N_UAV=${N_UAV:-2}                                          # step 16: 3
 VLM_MODEL=${VLM_MODEL:-int8}                              # DECIDE D3 (int8x4 needs CALIB=<4-seed onboard calibration>)
 CALIB=${CALIB:-int8_v2_calibration.npz}
 FRAMES=${FRAMES:-airsim}                                  # airsim (RPC 192.168.55.100:41451) or relay (frame_relay.py on the laptop)
 FENCE_OFF=${FENCE_OFF:-1}                                 # DECIDE D5
 MIN_FREE_MB=${MIN_FREE_MB:-6200}                          # VLM ~4.7 GB + runner + HIL server; below this: do not start
-RUN="--router --L 600 --city heightmap.npz --vlm-model $VLM_MODEL --vlm-frames $FRAMES --calib $CALIB --model-dir $HOME/vlm_damage_p3/model --ens-adapters $HOME/vlm_damage_p3/adapters --vlm-python $HOME/vlm_damage_p3/venv/bin/python --save-frames"
+RUN="--router --n $N_UAV --methods $METHODS --L 600 --city heightmap.npz --vlm-model $VLM_MODEL --vlm-frames $FRAMES --calib $CALIB --model-dir $HOME/vlm_damage_p3/model --ens-adapters $HOME/vlm_damage_p3/adapters --vlm-python $HOME/vlm_damage_p3/venv/bin/python --save-frames"
 RESTORED=0; ROUTER=; TEGRA=
 
 for f in ~/.pixhawk.owner ~/vlm_research/.x500.owner; do

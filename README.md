@@ -40,6 +40,11 @@ lists all of them, including the ones that failed.
 int8 VLM plus the fleet decisions on a Jetson Orin Nano: code in `sim/airsim_vlm/hil_vlm/` (`DESIGN.md`), results in
 `results/vlm_damage/hil_vlm_20261112/` and `results/vlm_damage/step13_summary.json`.
 
+15 further missions fly the three planners (RSG, RSG-BF as planner name `maqac_seq_bf`, RAG) with 3 UAVs and the VLM in the
+loop (pre-registration `results/vlm_damage/step16_hil_planners_prereg.txt`; campaign: `SEEDS="21000 21001 21002 21003 21004"
+VLM_PLANNER=prior METHODS="maqac_seq maqac_seq_bf rag" N_UAV=3 bash hil_campaign_vlm.sh`): per-mission results in
+`results/vlm_damage/hil_step16/`, summary from `scripts/step16_analyse.py` in `results/vlm_damage/step16_summary.json`.
+
 ## Licence
 
 Code: MIT (see `LICENSE`). Results and media: CC BY 4.0.

@@ -1,0 +1,37 @@
+Step 16 pre-registration: the three planners on flight hardware with the VLM in the loop (written 13 Nov 2026 before
+any step-16 mission; only 30 s dry runs on fake backends were run to check the code, seed 21000, not analysed:
+scratchpad dry16/).
+
+Why: the paper's own hardware-in-the-loop evidence for the planners it compares. Step 13 flew only RSG (2 UAVs). This
+step flies RSG, RSG-BF and RAG on the same set-up, with fresh seeds, from this repository's code (sim/airsim_vlm/hil_vlm).
+User decision 13 Nov 2026: "Go for new run for this paper".
+
+Set-up (as step 13 unless stated): UAV 0 flown by PX4 on the Pixhawk 6C in HITL (props off, USB power), AirSim
+CityEnviron on the laptop (physics, sensors, downward camera); the Jetson Orin Nano runs the network model, all UAVs'
+decisions (1 s rounds) and the int8 VLM (one seed, Jetson re-calibration int8_v2_calibration.npz) on UAV 0's frame every
+5 s. Changes from step 13: n = 3 UAVs (UAVs 1-2 kinematic), and VLM arm "prior" only (the closed loop of sec:hilvlm:
+each frame's conformal-set midpoint weight scales the planner's prior user value within 25 m of the seen buildings,
+shared with all planners, --vlm-share all).
+Planners: RSG (maqac_seq, relayed list, chain rule), RSG-BF (maqac_seq_bf: RSG + best-first order, sec:bf), RAG.
+Seeds 21000-21004 (not used in any earlier step), all three planners per seed, 15 missions of 300 s, complete seeds
+first, one batch (no reboot with the vehicle in the air), plus a 60 s shakedown (seed 19999, not analysed).
+Rig protocol: robotq booking, ~/.pixhawk.lock and Jetson ~/vlm_research/.x500.lock, the user's same-day
+"props off, USB power" in chat, full same-day parameter backup, restored and read back to 0 differences,
+GF 100/60/3 and SYS_HITL 0 at the end, hand-over checklist.
+Command: SEEDS="21000 21001 21002 21003 21004" VLM_PLANNER=prior METHODS="maqac_seq maqac_seq_bf rag" N_UAV=3
+         OUTDIR=results/hil_step16 bash hil_campaign_vlm.sh
+
+Pass bars (fixed now; all reported, failures included):
+  Q1 no failsafe, mode drop, disarm in the air or abort in any mission (k/n with Clopper-Pearson 95 % upper bound)
+  Q2 0 decision-round overruns (round not finished inside its 1 s), every planner
+  Q3 in-loop VLM compute p90 <= 5 s; >= 95 % of frame requests answered; 0 worker errors; belief age at use <= 10 s
+  Q4 fleet decision time p95 <= 100 ms per round with the VLM running, for each planner
+  Q5 system memory in use <= 7.3 GB at every round; no OOM kill
+  Q6 per mission, J within +-5 % of its replay twin (same VLM weights at the same rounds, no HIL), each planner
+  Q7 UAV 0 horizontal tracking error mean <= 5 m in every mission
+Reported without a test (5 seeds are too few): decision time per planner (median, p95, max), messages per round, and
+the paired J differences RSG-BF - RSG and RSG - RAG (mean, range, sign count). Expectation stated now: with 3 UAVs the
+planners differ by well under 1 % (step 12 found the best-first gain only at 8-16 UAVs on 200 m links).
+What the paper may claim: the three planners run in real time on flight hardware with the VLM in the loop, and the
+hardware loop reproduces the replay twin within the stated bar. Not claimed: any ranking of planners from these
+missions, any benefit of damage-aware weighting (intact city), any building-clearance figure.
